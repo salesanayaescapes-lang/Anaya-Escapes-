@@ -1,0 +1,132 @@
+
+.gallery-sec {
+  margin-top: 120px;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.gallery {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  overflow-x: hidden;
+}
+
+.gallery-subtitle {
+  width: 100%;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-gray);
+  margin-bottom: 5px;
+}
+
+.gallery-title {
+  font-weight: 600;
+  font-size: 95px;
+  width: 100%;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.gallery__strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.photo {
+  position: relative;
+}
+
+.photo__image {
+  width: 550px;
+  height: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  transition: all 0.5s ease;
+}
+
+.photo__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.photo__name {
+  position: absolute;
+  text-transform: uppercase;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  transition: all 0.5s ease;
+}
+
+.photo__image:hover img {
+  transform: scale(1.1);
+}
+
+.photo:hover .photo__name {
+  font-size: 36px;
+}
+
+/* .gallery__strip.two {
+  transform: translateX(-40%);
+}
+
+.gallery__strip.one, .gallery__strip.three{
+  animation: 65s move-it ease alternate infinite;
+  transform: translateX(2%);
+} */
+
+@media (min-width: 1840px) {
+  .gallery-title {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .gallery-title {
+    width: 100%;
+  }
+
+  .photo__image {
+    width: 450px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-title {
+    font-size: 42px;
+    width: 100%;
+    margin: 0 auto 40px auto;
+  }
+
+  .gallery-subtitle {
+    margin-bottom: 14px;
+  }
+
+  .photo__image {
+    width: 400px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 450px) {
+  .photo__image {
+    width: 300px;
+    height: 150px;
+  }
+}

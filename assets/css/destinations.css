@@ -1,0 +1,275 @@
+/* ==========================================================================
+    DESTINATIONS SECTION
+   ========================================================================== */
+.destinations-section {
+    padding-top: 65px;
+    text-align: center;
+}
+
+.destinations-subtitle {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: var(--text-gray);
+    margin-bottom: 5px;
+}
+
+.destinations-title {
+    font-family: "Clash Display", sans-serif;
+    font-weight: 600;
+    font-size: 95px;
+    width: 45%;
+    line-height: 0.95;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+}
+
+.destinations-toggles {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 72px;
+}
+
+.dest-toggle-btn {
+    padding: 11px 50px;
+    font-size: 20px;
+    border-radius: 70px;
+    cursor: pointer;
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.dest-toggle-btn.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* -------- Carousel -------- */
+
+.destinations-carousel-main-container {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+}
+
+.destinations-carousel-wrapper {
+    /* border: 1px solid green; */
+    width: 100%;
+    overflow: hidden;
+    margin: 0 20px;
+}
+
+.destinations-carousel {
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    /* scrollbar-width: none; */
+}
+
+.dest-arrow-btn {
+    background: var(--primary-color);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dest-arrow-btn.prev img {
+    transform: rotate(180deg);
+}
+
+.dest-arrow-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+/* -------- Card -------- */
+.destination-card {
+    position: relative;
+    width: 420px;
+    height: 540px;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dest-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.dest-card-link {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.dest-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 159px 0 26px;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.2) 15%,
+            rgba(0, 0, 0, 0) 40%,
+            rgba(0, 0, 0, 0.2) 85%);
+}
+
+.dest-card-content h3, .dest-card-content p {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.dest-card-title {
+    font-family: "De latte", sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    text-shadow: 5px 5px 4px rgba(24, 54, 60, 0.6);
+    color: white;
+}
+
+/* .dest-card-title.goa {
+    color: #adfebe;
+}
+
+.dest-card-title.kerala {
+    color: #ffc969;
+}
+
+.dest-card-title.kashmir {
+    color: #95d8ff;
+} */
+
+.dest-card-price-box {
+    width: 90%;
+    height: 80px;
+    background: linear-gradient(90deg,
+            rgba(244, 244, 244, 0.2) 0%,
+            rgba(255, 255, 255, 0.03) 100%);
+    border-radius: 20px;
+    backdrop-filter: blur(1px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--text-light);
+}
+
+.dest-price-label {
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+
+.dest-price {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* -------- Responsive -------- */
+@media (min-width: 1840px) {
+    .destinations-title {
+        font-size: 120px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .destinations-carousel {
+        justify-content: flex-start;
+    }
+
+    .destinations-carousel::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .destinations-title {
+        width: 90%;
+    }
+
+    .destinations-toggles {
+        gap: 20px;
+        margin-bottom: 60px;
+    }
+
+    .dest-toggle-btn {
+        padding: 9px 44px;
+        font-size: 17px;
+        border-radius: 65px;
+        letter-spacing: 2px;
+    }
+
+    .dest-arrow-btn {
+        display: none;
+    }
+
+    .destinations-carousel-wrapper {
+        margin: 0 0px;
+    }
+}
+
+@media (max-width: 768px) {
+    .destinations-section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .destinations-title {
+        font-size: 42px;
+    }
+
+    .destinations-subtitle {
+        margin-bottom: 14px;
+    }
+
+    .destinations-toggles {
+        gap: 14px;
+        margin-bottom: 50px;
+    }
+
+    .dest-toggle-btn {
+        padding: 9px 24px;
+        font-size: 13px;
+        border-radius: 65px;
+        letter-spacing: 1px;
+    }
+
+    .destinations-carousel-wrapper {
+        margin: 0;
+    }
+
+    .destinations-carousel {
+        gap: 20px;
+    }
+
+    .destination-card {
+        width: 280px;
+        height: 390px;
+        border-radius: 25px;
+    }
+
+    .dest-card-title {
+        font-size: 48px;
+    }
+}

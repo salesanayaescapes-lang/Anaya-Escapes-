@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Anaya Escapes - Your trusted partner for seamless and memorable travel experiences"
+    />
+    <meta
+      name="keywords"
+      content="travel agency, tour packages, vacation, holiday, travel booking"
+    />
+    <title>Package Detail | Anaya Escapes</title>
+    <!-- Main stylesheet -->
+    <link
+      rel="shortcut icon"
+      href="assets/images/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/assets/css/hero-package-detail.css" />
+    <link rel="stylesheet" href="/assets/css/package-detail.css" />
+    <link rel="stylesheet" href="/assets/css/packages-home.css" />
+    <link rel="stylesheet" href="/assets/css/modal.css" />
+    <link rel="stylesheet" href="/assets/css/mobile-nav.css" />
+    <link rel="stylesheet" href="/assets/css/country-code.css" />
+    <link rel="stylesheet" href="/assets/css/thank-you-popup.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="js/Global/dropdown.js" defer></script>
+    <script src="js/Global/mobileNav.js" defer></script>
+    <script src="js/Global/countryCode.js" defer></script>
+    <script src="js/Global/childrenAgeHandler.js" defer></script>
+    <script src="js/Global/thankYouPopup.js" defer></script>
+    <script src="js/Global/contactForm.js" defer></script>
+  </head>
+
+  <body>
+    <a
+      href="https://api.whatsapp.com/send/?phone=918448424042&text&type=phone_number&app_absent=0"
+    >
+      <div class="whtsp-icon">
+        <img src="assets/images/whtspicon.svg" alt="" />
+      </div>
+    </a>
+    <!-- Main Page Container -->
+    <div class="page-container">
+      <!-- Header Section: Contains logo, navigation and CTA button -->
+      <header id="header" class="site-header">
+        <!-- Logo Component -->
+        <div class="logo">
+          <a href="index.html">
+            <img
+              class="logo-image"
+              src="/assets/images/logo.png"
+              alt="anayaescapes-logo"
+            />
+          </a>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="main-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li class="dropdown">
+              <a href="packages.html" class="dropdown-toggle active"
+                >Packages</a
+              >
+              <div class="dropdown-content">
+                <a href="index.html#destinations" class="dropdown-item"
+                  >International</a
+                >
+                <a href="index.html#destinations" class="dropdown-item"
+                  >Domestic</a
+                >
+              </div>
+            </li>
+            <li><a href="Contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button
+          class="mobile-menu-toggle"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Call to Action Button -->
+        <a href="Contact.html" class="cta-button">Book Now</a>
+      </header>
+
+      <!-- Hero Section: Main banner with headline and image slider -->
+      <section id="hero" class="hero-section">
+        <!-- Hero Content: Left side with text and CTA -->
+        <div class="hero-content">
+          <p class="hero-subtitle text-uppercase">Subtitle</p>
+          <h1 class="hero-title">Package Detail Title</h1>
+          <p class="hero-description">Package Detail Para</p>
+
+          <!-- Hero Call-to-Action Button -->
+          <a href="#overview-card" class="hero-cta">
+            <span>Explore</span>
+            <div class="hero-cta-arrow-bg">
+              <img
+                src="/assets/images/arrow-right.svg"
+                alt="arrow right"
+                class="hero-cta-arrow"
+              />
+            </div>
+          </a>
+        </div>
+
+        <!-- Hero Image: Right side Image Slider -->
+        <div class="package-detail-images">
+          <!-- 3 images will be injected here dynamically -->
+        </div>
+      </section>
+
+      <!-- Package Detail Section: Contains package details and booking form -->
+      <section class="package-detail">
+        <div class="package-detail-content">
+          <!-- Left Section -->
+          <div class="package-detail-left">
+            <!-- Tabs -->
+            <div class="package-detail-tabs sticky-top">
+              <a href="#overview-card" class="tab active-tab">Overview</a>
+              <a href="#itinerary-card" class="tab">Itinerary</a>
+              <a href="#inc-exc" class="tab">Inclusion & Exclusion</a>
+              <a href="#cancellation-policy" class="tab">Cancellation Policy</a>
+              <a href="#imp-notes" class="tab">Imp Notes</a>
+            </div>
+
+            <!-- Overview Card -->
+            <div class="overview-card" id="overview-card">
+              <h3 class="overview-title">Overview</h3>
+              <div class="overview-card-header">
+                <div>
+                  <h2 class="package-title">Package Detail Title</h2>
+                  <p class="package-subtitle">Package Detail Subtitle</p>
+                  <div class="package-rating">
+                    <img src="/assets/images/testimonial-star.svg" alt="star" />
+                    <img src="/assets/images/testimonial-star.svg" alt="star" />
+                    <img src="/assets/images/testimonial-star.svg" alt="star" />
+                    <img src="/assets/images/testimonial-star.svg" alt="star" />
+                    <img src="/assets/images/testimonial-star.svg" alt="star" />
+                  </div>
+                </div>
+                <a href="#" class="book-link">Book Now</a>
+              </div>
+
+              <p class="package-description package-description-1">
+                Package Para 1
+              </p>
+              <p class="package-description package-description-2">
+                Package Para 2
+              </p>
+
+              <!-- Icons Row -->
+              <div class="package-icons">
+                <!-- Icons will be dynamically injected here -->
+
+                <!-- <div class="icon-box">4N 5D</div>
+              <div class="icon-box">3 Star Hotel</div>
+              <div class="icon-box">Transport Included</div>
+              <div class="icon-box">Min 2 Adult</div> -->
+              </div>
+            </div>
+
+            <!-- Itinerary Section -->
+            <div class="itinerary-card" id="itinerary-card">
+              <h3 class="itinerary-title">Itinerary</h3>
+
+              <!-- Day 1 -->
+              <details open class="itinerary-item">
+                <summary>
+                  <span class="day-label">Day 1</span>
+                  <span class="day-title"
+                    >Arrival in Dubai & Dhow Cruise Marina with Dinner</span
+                  >
+                </summary>
+                <div class="itinerary-body">
+                  <p>
+                    Arrive at Dubai International Airport, where our
+                    representative will welcome you and assist with your private
+                    transfer to the hotel. After check-in and some time to
+                    relax, your evening will be spent sailing along the
+                    sparkling Dubai Marina on a traditional wooden Dhow Cruise.
+                    Enjoy a delicious international buffet dinner onboard while
+                    taking in the illuminated skyline and live entertainment.
+                  </p>
+                  <p><strong>Included Experiences:</strong></p>
+                  <ul>
+                    <li>Dhow Cruise Marina with Buffet Dinner</li>
+                    <li>Live Tanoura Show</li>
+                    <li>Music & Scenic Night Views</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <!-- Inclusion & Exclusion -->
+            <div class="inc-exc" id="inc-exc">
+              <h3 class="section-title">Inclusion & Exclusion</h3>
+              <div class="inc-exc-container">
+                <!-- Inclusion -->
+                <div class="inc-section">
+                  <h2 class="inc-title">INCLUSION</h2>
+                  <ul class="inc-list">
+                    <!-- will be added dynamically -->
+                  </ul>
+                </div>
+
+                <!-- Exclusion -->
+                <div class="exc-section">
+                  <h2 class="exc-title">EXCLUSION</h2>
+                  <ul class="exc-list">
+                    <!-- will be added dynamically -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cancellation Policy -->
+            <div class="cancellation-policy" id="cancellation-policy">
+              <h3 class="section-title">Cancelation Policy</h3>
+              <div class="cancellation-policy-container">
+                <table class="policy-table">
+                  <thead>
+                    <tr>
+                      <th>Numbers Of Days Prior To Tour Date</th>
+                      <th>Cancellation Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>31 & More Days prior to the Departure Date</td>
+                      <td>The booking Amount is non-refundable, for balance amount credit note will be given.</td>
+                    </tr>
+                    <tr>
+                      <td>30 to 16 Days prior to the Departure Date</td>
+                      <td>50% of the full tour cost, for balance amount credit note will be given.</td>
+                    </tr>
+                    <tr>
+                      <td>15 Days prior to the Departure Date</td>
+                      <td>100% of the full tour cost</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Imp Notes -->
+            <div class="notes-container" id="imp-notes">
+              <h3 class="notes-title">Important Notes</h3>
+              <ul class="notes-list">
+                <!-- will be added dynamically -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Section (Only for desktops) -->
+          <aside class="package-detail-right sticky-aside">
+            <div class="price-card">
+              <h3 class="package-right-name">Title</h3>
+              <div class="price-card-header">
+                <div>
+                  <p>Package Price</p>
+                  <p class="package-price">₹99,999</p>
+                </div>
+                <span>Per Person</span>
+              </div>
+              <button class="btn-primary">Book Now</button>
+            </div>
+
+            <div class="contact-card">
+              <h3>Contact Details</h3>
+              <p>
+                <img src="/assets/images/callIcon.svg" alt="callIcon" /> +91
+                84484 24042
+              </p>
+              <!-- <p>
+                <img src="/assets/images/locationIcon.svg" alt="locationIcon" />
+                84, Shop no.5, ShreeNivas, Arjun Nagar, Safdarjung Enclave -
+                110029
+              </p> -->
+              <p>
+                <img src="/assets/images/mailIcon.svg" alt="emailIcon" />
+                sales@anayaescapes.com
+              </p>
+              <button class="btn-outline">Get In Touch</button>
+            </div>
+          </aside>
+
+          <!-- Price Card(Only for Mobile)  -->
+          <div class="price-card mobile-price-card">
+            <h3 class="package-right-name">Title</h3>
+            <div class="price-card-header">
+              <div>
+                <p>Package Price</p>
+                <p class="package-price">₹99,999</p>
+              </div>
+              <span>Per Person</span>
+            </div>
+            <button class="btn-primary">Book Now</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Packages Section: Featured travel packages -->
+
+      <!-- Testimonials Section: Client reviews and feedback -->
+      <!-- Footer Section -->
+      <footer id="footer" class="site-footer">
+        <div class="footer-main">
+          <div class="footer-column about-column">
+            <!--merged image-->
+            <div class="footer-logo">
+              <img
+                class="logo-image"
+                src="/assets/images/logo.png"
+                alt="anayaescapes-logo"
+              />
+            </div>
+            <p>
+              Where Elegance Meets, Every Escape.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h4>Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="packages.html">Packages</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="Contact.html">Contact Us</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="TnC.html">Terms & Conditions</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Get In Touch</h4>
+            <ul>
+              <li>
+                <a href="tel:+918448424042">
+                  <img src="/assets/images/callIcon.svg" alt="Phone" />+91 84484
+                  24042
+                </a>
+              </li>
+              <li>
+                <a href="mailto:support@anayaescapes.com">
+                  <img
+                    src="/assets/images/mailIcon.svg"
+                    alt="Email"
+                  />Support@anayaescapes.com
+                </a>
+              </li>
+              <li>
+                <a href="https://maps.app.goo.gl/vdxogJnuHXCupBGr8" target="_blank">
+                  <img src="/assets/images/locationIcon.svg" alt="Location" />84,
+                  Shop no. 5, Shanti Niwas, Arjun Nagar, Safdarjung Enclave -
+                  110029
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Follow Us On</h4>
+            <p>Follow us and stay updates with daily offers</p>
+            <div class="social-icons">
+              <a href="https://linktr.ee/info.anayaescapes" class="social-icon">
+                <img
+                  src="/assets/images/linktreeicon.svg"
+                  alt="Social Icon 1"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/anaya.escapes"
+                class="social-icon"
+              >
+                <img src="assets/images/igIcon.svg" />
+              </a>
+              <a
+                href="https://www.youtube.com/@AnayaEscapes"
+                class="social-icon"
+              >
+                <img src="/assets/images/ytIcon.svg" alt="Social Icon 3" />
+              </a>
+              <a
+                href="https://www.facebook.com/Anaya%20Escapes"
+                class="social-icon"
+              >
+                <img src="/assets/images/fbIcon.svg" alt="Social Icon 3" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Anaya Escapes. All Rights Reserved.</p>
+          <!-- <p>Developed by webdrave</p> -->
+        </div>
+      </footer>
+    </div>
+
+    <!-- Required Packages -->
+    <!-- GSAP -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+      integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Motion Path -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/MotionPathPlugin.min.js"></script>
+
+    <!-- Split Text -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <!-- Draggable -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"
+      integrity="sha512-dgqdovLK5r/NMiV5YfWA0xC94DKGrm+6q1OZpuWHm+uBGLTck6wu58WAX9lmy8wec6cVnsgxbPJ60DtmNFnfgg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- ScrollTrigger -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+      integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Locomotive -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script type="module" src="js/main-package-detail.js"></script>
+  </body>
+</html>

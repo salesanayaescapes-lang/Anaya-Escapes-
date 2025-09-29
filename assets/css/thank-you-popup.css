@@ -1,0 +1,208 @@
+/* Thank You Popup Styles */
+.thank-you-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.thank-you-popup-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.thank-you-popup {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  transform: scale(0.7) translateY(30px);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid rgba(22, 92, 199, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.thank-you-popup-overlay.show .thank-you-popup {
+  transform: scale(1) translateY(0);
+}
+
+.thank-you-popup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #165CC7 0%, #4A90E2 100%);
+}
+
+.thank-you-popup-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.thank-you-popup-close:hover {
+  background-color: #f1f5f9;
+  color: #333;
+}
+
+.thank-you-popup-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #165CC7 0%, #4A90E2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: checkmarkBounce 0.6s ease 0.3s both;
+}
+
+.thank-you-popup-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.thank-you-popup-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+  font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+}
+
+.thank-you-popup-message {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.thank-you-popup-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.thank-you-popup-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  min-width: 120px;
+}
+
+.thank-you-popup-btn.primary {
+  background: linear-gradient(135deg, #165CC7 0%, #4A90E2 100%);
+  color: white;
+}
+
+.thank-you-popup-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(22, 92, 199, 0.3);
+}
+
+.thank-you-popup-btn.secondary {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.thank-you-popup-btn.secondary:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+/* Animations */
+@keyframes checkmarkBounce {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .thank-you-popup {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+  
+  .thank-you-popup-title {
+    font-size: 24px;
+  }
+  
+  .thank-you-popup-message {
+    font-size: 14px;
+  }
+  
+  .thank-you-popup-actions {
+    flex-direction: column;
+  }
+  
+  .thank-you-popup-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .thank-you-popup {
+    width: 95%;
+    padding: 25px 15px;
+  }
+  
+  .thank-you-popup-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .thank-you-popup-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+}

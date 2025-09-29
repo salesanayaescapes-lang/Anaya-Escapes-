@@ -1,0 +1,101 @@
+/* ==========================================================================
+    FONTS
+   ========================================================================== */
+/* Custom font loading for 'Clash Display' */
+@font-face {
+    font-family: "Clash Display";
+    src: url("../../assets/fonts/ClashDisplay-Variable.ttf") format("woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("../../assets/fonts/ClashDisplay-Variable.ttf") format("woff2");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "De latte";
+    src: url("../../assets/fonts/DeLatto.ttf") format("ttf");
+    font-weight: 600;
+}
+
+:root {
+    --primary-color: #165cc7;
+    --text-dark: #000000;
+    --text-dark-secondary: #222222;
+    --text-gray: #5d5d5d;
+    --text-light: #ffffff;
+    --accent-yellow: #e18903;
+    --bg-white: #ffffff;
+    --border-light: rgba(41, 134, 254, 0.2);
+
+    /* For Hero Image: Right Section */
+    --radius: 28px;
+    --progress-width: 2px;
+}
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: "Clash Display", sans-serif;
+    background-color: var(--bg-white);
+    color: var(--text-dark-secondary);
+    overflow-x: hidden;
+}
+
+.page-container {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+}
+
+section {
+    padding: 80px 60px;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    /* user-select: none; */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    /* user-select: none; */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+@media (max-width: 1200px) {
+    section {
+        padding: 60px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 40px 20px;
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "anaya-escapes-website",
+  "version": "1.0.0",
+  "description": "Anaya Escapes - Premium Travel Agency Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.8"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "travel",
+    "agency",
+    "tourism",
+    "packages"
+  ],
+  "author": "Anaya Escapes",
+  "license": "ISC"
+}

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Anaya Escapes - Your trusted partner for seamless and memorable travel experiences"
+    />
+    <meta
+      name="keywords"
+      content="travel agency, tour packages, vacation, holiday, travel booking"
+    />
+    <title>Packages | Anaya Escapes</title>
+    <!-- Main stylesheet -->
+    <link
+      rel="shortcut icon"
+      href="assets/images/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/assets/css/packages-packages.css" />
+    <link rel="stylesheet" href="/assets/css/mobile-nav.css" />
+    <link rel="stylesheet" href="/assets/css/thank-you-popup.css" />
+    <link rel="stylesheet" href="/assets/css/searchable-dropdown.css" />
+    <link rel="stylesheet" href="/assets/css/location-filters.css" />
+    <link rel="stylesheet" href="/assets/css/country-code.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="js/Global/dropdown.js" defer></script>
+    <script src="js/Global/mobileNav.js" defer></script>
+    <script src="js/Global/thankYouPopup.js" defer></script>
+    <script src="js/Global/searchableDropdown.js" defer></script>
+    <script src="js/Global/countryCode.js" defer></script>
+    <script src="js/Global/childrenAgeHandler.js" defer></script>
+    <script src="js/Global/packageDropdown.js" defer></script>
+    <script src="js/Global/contactForm.js" defer></script>
+  </head>
+
+  <body>
+    <a
+      href="https://api.whatsapp.com/send/?phone=918448424042&text&type=phone_number&app_absent=0"
+    >
+      <div class="whtsp-icon">
+        <img src="assets/images/whtspicon.svg" alt="" />
+      </div>
+    </a>
+    <!-- Main Page Container -->
+    <div class="page-container">
+      <!-- Header Section: Contains logo, navigation and CTA button -->
+      <header id="header" class="site-header">
+        <!-- Logo Component -->
+        <div class="logo">
+          <a href="index.html">
+            <img
+              class="logo-image"
+              src="/assets/images/logo.png"
+              alt="anayaescapes-logo"
+            />
+          </a>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="main-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li class="dropdown">
+              <a href="packages.html" class="dropdown-toggle active"
+                >Packages</a
+              >
+              <div class="dropdown-content">
+                <a
+                  href="packages.html?filter=international"
+                  class="dropdown-item"
+                  >International</a
+                >
+                <a href="packages.html?filter=domestic" class="dropdown-item"
+                  >Domestic</a
+                >
+              </div>
+            </li>
+            <li><a href="Contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button
+          class="mobile-menu-toggle"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Call to Action Button -->
+        <a href="Contact.html" class="cta-button">Book Now</a>
+      </header>
+
+      <!-- Hero Section: Main banner with headline and image slider -->
+      <section id="hero" class="hero-section">
+        <!-- Hero Content: Left side with text and CTA -->
+        <div class="hero-content">
+          <p class="hero-subtitle text-uppercase">Anaya escapes - packages</p>
+          <h1 class="hero-title">
+            Pick a <span class="text-primary">package</span>,
+            <span class="text-primary">pack a</span> memory
+          </h1>
+          <p class="hero-description">
+            <span class="text-primary">Anaya Escapes</span> is your gateway to
+            unforgettable <span class="text-primary">adventures</span>. From
+            exotic beaches to bustling cityscapes, we craft tailor-made travel
+            <span class="text-primary">experiences</span> that blend
+            <span class="text-primary">comfort</span>, culture, and discovery.
+          </p>
+
+          <!-- Hero Call-to-Action Button -->
+          <a href="#packages" class="hero-cta">
+            <span>Explore</span>
+            <div class="hero-cta-arrow-bg">
+              <img
+                src="/assets/images/arrow-right.svg"
+                alt="arrow right"
+                class="hero-cta-arrow"
+              />
+            </div>
+          </a>
+
+          <!-- Decorative Elements -->
+          <div class="hero-decoration">
+            <svg
+              class="hero-deco-line"
+              width="731"
+              height="273"
+              viewBox="0 0 731 273"
+              fill="none"
+            >
+              <path
+                id="hero-line-path"
+                d="M-2.65268 239.54C97.1636 281.364 161.375 294.088 349.68 203.666C386.189 186.135 419.5 143.647 396.524 130.48C341.429 98.9038 361.236 201.723 389.833 198.377C611 172.5 583.501 110.391 730.509 1.25909"
+                stroke="#165CC7"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+
+            <img
+              src="/assets/images/paper-plane.svg"
+              alt="Paper plane"
+              class="hero-deco-plane"
+              id="hero-plane"
+            />
+          </div>
+        </div>
+
+        <!-- Hero Image: Right side Image Slider -->
+        <div
+          class="hero-image-slider"
+          id="hero-image-slider"
+          aria-roledescription="carousel"
+          aria-label="Scenic image slider"
+        >
+          <div
+            class="hero-image-slides"
+            id="hero-image-slides"
+            aria-live="polite"
+          ></div>
+
+          <div class="progress-rail" aria-hidden="true">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+
+          <div class="controls">
+            <button
+              class="hero-image-slider-btn prev"
+              id="prevBtn"
+              aria-label="Previous slide"
+            >
+              <svg
+                width="31"
+                height="31"
+                viewBox="0 0 31 31"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.4077 7.78345L25.9952 15.3709L18.4077 22.9584"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M4.74658 15.3712H25.7841"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="sr-only">Prev</span>
+            </button>
+            <button
+              class="hero-image-slider-btn"
+              id="nextBtn"
+              aria-label="Next slide"
+            >
+              <svg
+                width="31"
+                height="31"
+                viewBox="0 0 31 31"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.4077 7.78345L25.9952 15.3709L18.4077 22.9584"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M4.74658 15.3712H25.7841"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <span class="sr-only">Next</span>
+            </button>
+          </div>
+
+          <span class="slider-border"></span>
+        </div>
+      </section>
+
+      <!-- Packages Section: Featured travel packages -->
+      <section id="packages" class="packages-section">
+        <!-- Packages Header -->
+        <div class="packages-header">
+          <h2 class="packages-title">
+            Explore <span class="text-primary">Our</span> All
+            <span class="text-primary">Packages</span>
+          </h2>
+
+          <div class="filter-section">
+            <div class="filter-header">
+              <span>Filter Packages</span>
+              <button>Clear All</button>
+            </div>
+            <div class="filter-box">
+              <!-- International -->
+              <div class="filter-group">
+                <h4>International</h4>
+                <div class="filter-options">
+                  <!-- Buttons will be populated dynamically from packages.json -->
+                </div>
+              </div>
+
+              <!-- Domestic -->
+              <div class="filter-group">
+                <h4>Domestic</h4>
+                <div class="filter-options">
+                  <!-- Buttons will be populated dynamically from packages.json -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards container -->
+        <div class="packages-cards-container">
+          <!-- Package Card will be dynamically injected here -->
+        </div>
+      </section>
+
+      <!-- Testimonials Section: Client reviews and feedback -->
+      <section id="testimonials" class="testimonials-section">
+        <p class="testimonials-subtitle">Testimonials</p>
+        <h2 class="testimonials-title">
+          What <span class="text-primary">Our</span>
+          <span class="text-primary">Client</span> Say
+        </h2>
+
+        <div class="testimonials-carousel-wrapper">
+          <div class="testimonials-carousel">
+            <article class="testimonial-card">
+              <div class="testimonial-quote-bg">“</div>
+              <div class="testimonial-rating">
+                <img src="/assets/images/testimonial-star.svg" alt="star" /><img
+                  src="/assets/images/testimonial-star.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star.svg"
+                  alt="star"
+                /><img src="/assets/images/testimonial-star.svg" alt="star" />
+              </div>
+              <p class="testimonial-text">
+                Anaya escapes is the best travel agency in Delhi, affordable rates, quality service & supportive 😁 I will suggest you to take travel services from them.
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3407.jpg?w=360"
+                  alt="Priya Mehta"
+                  class="author-avatar"
+                />
+                <span class="author-name">Suraj Koli</span>
+              </div>
+            </article>
+
+            <article class="testimonial-card dark">
+              <div class="testimonial-quote-bg">“</div>
+              <div class="testimonial-rating">
+                <img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                />
+              </div>
+              <p class="testimonial-text">
+                Booked a Goa package and the stay was fabulous and Thanks to Rahul Koli for the amazing itinerary
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="https://lh3.googleusercontent.com/geougc-cs/AB3l90AYfcoE8c59n9ZnuotQWRIrjFK0gSiFkEFzEPIdCKm62uUEpNk4x5RIraHLa6c08nHgyNM7BZJ99h8zk3qdYEeLzJuSrQkeG09-UrW7e7uaO9L_qsl_vVHwVyr8iRY9X6CYpWg4t_RO5Csu=s157-p-k-rw"
+                  alt="Priya Mehta"
+                  class="author-avatar"
+                />
+                <span class="author-name">Rahul Sanskrityayan</span>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-quote-bg">“</div>
+              <div class="testimonial-rating">
+                <img src="/assets/images/testimonial-star.svg" alt="star" /><img
+                  src="/assets/images/testimonial-star.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star.svg"
+                  alt="star"
+                /><img src="/assets/images/testimonial-star.svg" alt="star" />
+              </div>
+              <p class="testimonial-text">
+                Anaya Escapes made our vacation truly unforgettable! Every
+                detail was perfectly planned from the smooth bookings to the
+                breathtaking destinations.
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3407.jpg?w=360"
+                  alt="Priya Mehta"
+                  class="author-avatar"
+                />
+                <span class="author-name">Deepak Pandey</span>
+              </div>
+            </article>
+
+            <article class="testimonial-card dark">
+              <div class="testimonial-quote-bg">“</div>
+              <div class="testimonial-rating">
+                <img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                /><img
+                  src="/assets/images/testimonial-star-dark.svg"
+                  alt="star"
+                />
+              </div>
+              <p class="testimonial-text">
+                The Anaya Escape's team was friendly, attentive,
+                and made sure we felt cared for throughout the trip.
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3407.jpg?w=360"
+                  alt="Priya Mehta"
+                  class="author-avatar"
+                />
+                <span class="author-name">Rajni Koli</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact-section">
+        <div class="contact-form-container">
+          <h2 class="contact-title">
+            Let’s <span class="text-primary">Connect.</span>
+          </h2>
+          <form class="contact-form" method="POST">
+            
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-no">Contact No.</label>
+              <input type="tel" id="contact-no" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="package-name">Package Name (Domestic/International)</label>
+              <select id="package-name" name="package">
+                <option value="">Select package type first</option>
+                <!-- Options will be populated dynamically from packages.json -->
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="adults">Adults</label>
+                <input type="number" id="adults" name="adults" min="1" />
+              </div>
+              <div class="form-group">
+                <label for="children">Children</label>
+                <input type="number" id="children" name="children" min="0" />
+              </div>
+            </div>
+            <div class="form-group children-age-group" style="display: none;">
+              <label for="children-ages">Children Ages (comma separated)</label>
+              <input type="text" id="children-ages" name="children_ages" placeholder="e.g., 5, 8, 12" />
+            </div>
+            <button type="submit" class="submit-btn">SUBMIT</button>
+          </form>
+        </div>
+        <div
+          class="contact-image-container"
+          data-scroll
+          data-scroll-speed="0.03"
+        ></div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer id="footer" class="site-footer">
+        <div class="footer-main">
+          <div class="footer-column about-column">
+            <!--merged image-->
+            <div class="footer-logo">
+              <img
+                class="logo-image"
+                src="/assets/images/logo.png"
+                alt="anayaescapes-logo"
+              />
+            </div>
+            <p>
+              Where Elegance Meets, Every Escape.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h4>Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="packages.html">Packages</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="Contact.html">Contact Us</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="TnC.html">Terms & Conditions</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Get In Touch</h4>
+            <ul>
+              <li>
+                <a href="tel:+918448424042">
+                  <img src="/assets/images/callIcon.svg" alt="Phone" />+91 84484
+                  24042
+                </a>
+              </li>
+              <li>
+                <a href="mailto:support@anayaescapes.com">
+                  <img
+                    src="/assets/images/mailIcon.svg"
+                    alt="Email"
+                  />Support@anayaescapes.com
+                </a>
+              </li>
+              <li>
+                <a href="https://maps.app.goo.gl/vdxogJnuHXCupBGr8" target="_blank">
+                  <img src="/assets/images/locationIcon.svg" alt="Location" />84,
+                  Shop no. 5, Shanti Niwas, Arjun Nagar, Safdarjung Enclave -
+                  110029
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Follow Us On</h4>
+            <p>Follow us and stay updates with daily offers</p>
+            <div class="social-icons">
+              <a href="https://linktr.ee/info.anayaescapes" class="social-icon">
+                <img
+                  src="/assets/images/linktreeicon.svg"
+                  alt="Social Icon 1"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/anaya.escapes"
+                class="social-icon"
+              >
+                <img src="assets/images/igIcon.svg" />
+              </a>
+              <a
+                href="https://www.youtube.com/@AnayaEscapes"
+                class="social-icon"
+              >
+                <img src="/assets/images/ytIcon.svg" alt="Social Icon 3" />
+              </a>
+              <a
+                href="https://www.facebook.com/Anaya%20Escapes"
+                class="social-icon"
+              >
+                <img src="/assets/images/fbIcon.svg" alt="Social Icon 3" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Anaya Escapes. All Rights Reserved.</p>
+          <!-- <p>Developed by webdrave</p> -->
+        </div>
+      </footer>
+    </div>
+
+    <!-- Required Packages -->
+    <!-- GSAP -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+      integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Motion Path -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/MotionPathPlugin.min.js"></script>
+
+    <!-- Split Text -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <!-- Draggable -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"
+      integrity="sha512-dgqdovLK5r/NMiV5YfWA0xC94DKGrm+6q1OZpuWHm+uBGLTck6wu58WAX9lmy8wec6cVnsgxbPJ60DtmNFnfgg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- ScrollTrigger -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+      integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Locomotive -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script type="module" src="js/main-packages.js"></script>
+    
+  </body>
+</html>

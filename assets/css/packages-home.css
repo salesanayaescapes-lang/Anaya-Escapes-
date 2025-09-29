@@ -1,0 +1,284 @@
+/* ========================================================================== 
+   PACKAGES SECTION
+   ========================================================================== */
+.packages-section {
+    padding-top: 50px;
+    text-align: center;
+    padding-right: 0;
+    padding-left: 0;
+    user-select: none;
+}
+
+.packages-subtitle {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: var(--text-gray);
+    margin-bottom: 5px;
+}
+
+.packages-title {
+    font-family: "Clash Display", sans-serif;
+    font-weight: 600;
+    font-size: 95px;
+    width: 45%;
+    line-height: 1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+/* -------- Carousel -------- */
+.packages-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.packages-carousel {
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    padding: 0 90px 20px;
+    margin: 0 -90px;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.packages-carousel::-webkit-scrollbar {
+    display: none;
+    /* Chrome & Safari */
+}
+
+/* -------- Card -------- */
+.package-card {
+    position: relative;
+    width: 420px;
+    height: 520px;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.package-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+.package-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(173% 205% at 50% 50%,
+            rgba(0, 6, 14, 0.2) 0%,
+            rgba(110, 191, 244, 0.04) 77%,
+            rgba(70, 144, 212, 0) 100%);
+    z-index: -1;
+}
+
+.package-card-tags {
+    display: flex;
+    gap: 8px;
+    padding: 20px;
+}
+
+.tag {
+    background-color: rgba(255, 255, 255, 0.23);
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 12px;
+    backdrop-filter: blur(2px);
+}
+
+.package-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 12px 25px 14px;
+    backdrop-filter: blur(4px);
+}
+
+.package-card-info {
+    text-align: left;
+}
+
+.package-card-info h3 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.package-card-info p {
+    font-size: 12px;
+    max-width: 290px;
+    margin-bottom: 14px;
+    line-height: 1.2;
+}
+
+.package-rating {
+    display: flex;
+    gap: 6px;
+}
+
+.package-card-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.package-price {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.package-arrow-btn {
+    width: 44px;
+    height: 44px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.package-arrow-btn:hover img {
+    rotate: 30deg;
+}
+
+.package-arrow-btn img {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+/* -------- Packages Footer -------- */
+.packages-footer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+.packages-progress-bar {
+    width: 500px;
+    height: 1px;
+    background-color: #a5a5a5;
+}
+
+.packages-progress {
+    width: 40%;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+.packages-explore-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 16px 54px;
+    border-radius: 47px;
+    font-size: 22px;
+}
+
+/* -------- Responsive -------- */
+@media (min-width: 1840px) {
+    .packages-title {
+        font-size: 120px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .packages-title {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .packages-title {
+        font-size: 42px;
+        width: 60%;
+        margin: 0 auto 40px auto;
+    }
+
+    .packages-subtitle {
+        margin-bottom: 14px;
+    }
+
+    .packages-carousel {
+        padding: 0 20px 20px;
+        margin: 0 -20px;
+        gap: 20px;
+    }
+
+    .package-card {
+        width: 280px;
+        height: 360px;
+    }
+
+    .package-card-info h3 {
+        font-size: 24px;
+    }
+
+    .package-card-tags {
+        display: flex;
+        gap: 4px;
+        padding: 10px;
+    }
+
+    .package-card-content {
+        padding: 8px 10px 14px;
+    }
+
+    .package-card-info h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    .package-card-info p {
+        font-size: 10px;
+        max-width: 180px;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+
+    .package-rating {
+        gap: 3px;
+    }
+
+    .package-price {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .package-arrow-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 6px;
+    }
+
+    .package-arrow-btn img {
+        width: 20px;
+        height: 20px;
+    }
+
+
+    .packages-explore-btn {
+        padding: 12px 40px;
+        border-radius: 40px;
+        font-size: 18px;
+    }
+
+    .packages-progress-bar {
+        width: 200px;
+        height: 1px;
+        background-color: #a5a5a5;
+    }
+}

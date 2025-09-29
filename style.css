@@ -1,0 +1,23 @@
+/* Import global styles */
+@import url("assets/css/global.css");
+
+/* Import section styles */
+@import url("assets/css/header.css");
+@import url("assets/css/dropdown.css");
+@import url("assets/css/hero.css");
+@import url("assets/css/banner.css");
+@import url("assets/css/about.css");
+@import url("assets/css/services.css");
+@import url("assets/css/tnc.css");
+@import url("assets/css/loader.css");
+@import url("assets/css/about-page.css");
+@import url("assets/css/newsletter.css");
+@import url("assets/css/gallery-page.css");
+
+/* Packages are individually implemented in respective pages(html files) */
+
+@import url("assets/css/destinations.css");
+@import url("assets/css/gallery.css");
+@import url("assets/css/testimonials.css");
+@import url("assets/css/contact.css");
+@import url("assets/css/footer.css");

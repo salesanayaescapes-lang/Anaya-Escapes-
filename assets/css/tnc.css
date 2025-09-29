@@ -1,0 +1,303 @@
+/* ==========================================================================
+    TERMS AND CONDITIONS & PRIVACY POLICY PAGES
+   ========================================================================== */
+
+.tnc-section {
+    padding: 120px 60px;
+    background-color: var(--bg-white);
+}
+
+.tnc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tnc-title {
+    font-family: "Clash Display", sans-serif;
+    font-size: 64px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.tnc-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-gray);
+    margin-bottom: 80px;
+    opacity: 0.8;
+}
+
+.tnc-content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 80px;
+}
+
+.tnc-item {
+    padding: 32px;
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    background-color: var(--bg-white);
+    transition: all 0.3s ease;
+}
+
+.tnc-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 32px rgba(22, 92, 199, 0.1);
+}
+
+.tnc-item h3 {
+    font-family: "Clash Display", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.tnc-item p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-dark-secondary);
+    opacity: 0.9;
+}
+
+.tnc-footer {
+    text-align: center;
+    padding: 48px 32px;
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    background-color: #fafbfc;
+}
+
+.tnc-footer p {
+    font-size: 18px;
+    color: var(--text-gray);
+    margin-bottom: 32px;
+    opacity: 0.8;
+}
+
+.tnc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-family: "Clash Display", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.tnc-cta:hover {
+    background-color: #0d4ba3;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(22, 92, 199, 0.3);
+}
+
+.tnc-cta-arrow-bg {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tnc-cta-arrow {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+}
+
+/* ==========================================================================
+    PRIVACY POLICY PAGE STYLES
+   ========================================================================== */
+
+.privacy-section {
+    padding: 120px 60px;
+    background-color: var(--bg-white);
+}
+
+.privacy-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.privacy-title {
+    font-family: "Clash Display", sans-serif;
+    font-size: 64px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.privacy-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-gray);
+    margin-bottom: 80px;
+    opacity: 0.8;
+}
+
+.privacy-content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 80px;
+}
+
+.privacy-item {
+    padding: 32px;
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    background-color: var(--bg-white);
+    transition: all 0.3s ease;
+}
+
+.privacy-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 32px rgba(22, 92, 199, 0.1);
+}
+
+.privacy-item h3 {
+    font-family: "Clash Display", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.privacy-item p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-dark-secondary);
+    opacity: 0.9;
+}
+
+.privacy-footer {
+    text-align: center;
+    padding: 48px 32px;
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    background-color: #fafbfc;
+}
+
+.privacy-footer p {
+    font-size: 18px;
+    color: var(--text-gray);
+    margin-bottom: 32px;
+    opacity: 0.8;
+}
+
+.privacy-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-family: "Clash Display", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.privacy-cta:hover {
+    background-color: #0d4ba3;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(22, 92, 199, 0.3);
+}
+
+.privacy-cta-arrow-bg {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.privacy-cta-arrow {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .tnc-section,
+    .privacy-section {
+        padding: 100px 40px;
+    }
+    
+    .tnc-title,
+    .privacy-title {
+        font-size: 56px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tnc-section,
+    .privacy-section {
+        padding: 80px 20px;
+    }
+    
+    .tnc-title,
+    .privacy-title {
+        font-size: 42px;
+    }
+    
+    .tnc-item,
+    .privacy-item {
+        padding: 24px;
+    }
+    
+    .tnc-item h3,
+    .privacy-item h3 {
+        font-size: 20px;
+    }
+    
+    .tnc-item p,
+    .privacy-item p {
+        font-size: 16px;
+    }
+    
+    .tnc-footer,
+    .privacy-footer {
+        padding: 32px 20px;
+    }
+    
+    .tnc-cta,
+    .privacy-cta {
+        padding: 14px 28px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tnc-title,
+    .privacy-title {
+        font-size: 36px;
+    }
+    
+    .tnc-content,
+    .privacy-content {
+        gap: 32px;
+    }
+    
+    .tnc-item,
+    .privacy-item {
+        padding: 20px;
+    }
+}

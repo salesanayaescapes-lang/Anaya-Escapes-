@@ -1,0 +1,327 @@
+/* ========================================================================== 
+    PACKAGES SECTION
+   ========================================================================== */
+.packages-section {
+    padding-top: 100px;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.packages-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.packages-title {
+    font-family: "Clash Display", sans-serif;
+    font-weight: 600;
+    font-size: 75px;
+    width: 45%;
+    line-height: 1;
+}
+
+/* -------- Filter -------- */
+.filter-section {
+    max-width: 600px;
+    flex: 1;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.filter-header button {
+    font-size: 14px;
+    color: #0066ff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.filter-box {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-options button {
+    padding: 6px 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.filter-options button:hover {
+    border-color: #0066ff;
+    color: #0066ff;
+}
+
+.filter-options button.active {
+    background: #0066ff;
+    color: #fff;
+    border-color: #0066ff;
+}
+
+/* -------- Cards Container -------- */
+
+.packages-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-rows: auto;
+    gap: 40px;
+    align-items: start;
+    justify-items: center;
+}
+
+.no-packages-message p {
+    color: red;
+}
+
+/* -------- Card -------- */
+.package-card {
+    position: relative;
+    width: 420px;
+    height: 520px;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: start;
+}
+
+.package-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+.package-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(173% 205% at 50% 50%,
+            rgba(0, 6, 14, 0.2) 0%,
+            rgba(110, 191, 244, 0.04) 77%,
+            rgba(70, 144, 212, 0) 100%);
+    z-index: -1;
+}
+
+.package-card-tags {
+    display: flex;
+    gap: 8px;
+    padding: 20px;
+}
+
+.tag {
+    background-color: rgba(255, 255, 255, 0.23);
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 12px;
+    backdrop-filter: blur(2px);
+}
+
+.package-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 12px 25px 14px;
+    backdrop-filter: blur(4px);
+}
+
+.package-card-info {
+    text-align: left;
+}
+
+.package-card-info h3 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    line-height: 1;
+    width: 85%;
+}
+
+.package-card-info p {
+    font-size: 12px;
+    max-width: 270px;
+    margin-bottom: 14px;
+    line-height: 1.2;
+}
+
+.package-rating {
+    display: flex;
+    gap: 6px;
+}
+
+.package-card-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.package-price {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.package-arrow-btn {
+    width: 44px;
+    height: 44px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.package-arrow-btn img {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+.package-arrow-btn:hover img {
+    rotate: 30deg;
+}
+
+/* -------- Responsive -------- */
+@media (min-width: 1840px) {
+    .packages-title {
+        font-size: 100px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .packages-section {
+        padding-top: 50px;
+        gap: 25px;
+    }
+
+    .packages-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        gap: 30px;
+    }
+
+    .package-card {
+        width: 100%;
+        height: 430px;
+    }
+
+    .package-card-info h3 {
+        width: 100%;
+    }
+
+    .packages-header {
+        flex-direction: column;
+    }
+
+    .packages-title {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .packages-title {
+        font-size: 42px;
+    }
+
+    .packages-cards-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .no-packages-message p {
+        text-align: center;
+    }
+
+    .filter-box {
+        gap: 20px;
+    }
+
+    .package-card {
+        width: 100%;
+        height: 430px;
+    }
+
+    .package-card-tags {
+        display: flex;
+        gap: 4px;
+        padding: 10px;
+    }
+
+    .package-card-content {
+        padding: 8px 10px 14px;
+    }
+
+    .package-card-info h3 {
+        font-size: 24px;
+        margin-bottom: 8px;
+        width: 85%;
+    }
+
+    .package-card-info p {
+        font-size: 10px;
+        max-width: 180px;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+
+    .package-rating {
+        gap: 3px;
+    }
+
+    .package-price {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .package-arrow-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 6px;
+    }
+
+    .package-arrow-btn img {
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -1,0 +1,876 @@
+/**
+ * Dynamic Package Dropdown Handler
+ * Fetches packages from packages.json and populates all contact form dropdowns
+ */
+
+class PackageDropdownManager {
+    constructor() {
+        this.packages = [];
+        this.init();
+    }
+
+    async init() {
+        try {
+            await this.loadPackages();
+            
+            // Get the package dropdown
+            const packageSelect = document.getElementById('package-name');
+            if (!packageSelect) {
+                console.warn('Package dropdown not found');
+                return;
+            }
+            
+            // Create our custom dropdown container if it doesn't exist
+            let dropdownContainer = packageSelect.parentElement;
+            if (!dropdownContainer.classList.contains('package-dropdown-container')) {
+                dropdownContainer = document.createElement('div');
+                dropdownContainer.className = 'package-dropdown-container';
+                packageSelect.parentNode.insertBefore(dropdownContainer, packageSelect);
+                dropdownContainer.appendChild(packageSelect);
+            }
+            
+            // Set up our custom dropdown
+            this.setupCustomDropdown(packageSelect);
+        } catch (error) {
+            console.error('Error initializing package dropdown:', error);
+            this.handleError();
+        }
+    }
+
+    async loadPackages() {
+        console.log('Starting to load packages...');
+        try {
+            // Try multiple paths to find packages.json
+            const possiblePaths = [
+                './packages.json',
+                '../packages.json',
+                '/packages.json',
+                'packages.json',
+                '/ANAYA-ESCAPES-WEBSITE/packages.json',
+                '/ANAYA-ESCAPES-WEBSITE/js/Global/packages.json'
+            ];
+            
+            let response = null;
+            let lastError = null;
+            
+            for (const path of possiblePaths) {
+                console.log(`Attempting to load packages from: ${path}`);
+                try {
+                    response = await fetch(path);
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log(`Successfully loaded ${data.length} packages from: ${path}`);
+                        this.packages = data;
+                        return; // Exit the function after successful load
+                    } else {
+                        console.warn(`Failed to load from ${path}: HTTP ${response.status}`);
+                    }
+                } catch (err) {
+                    lastError = err;
+                    console.warn(`Error loading from ${path}:`, err.message);
+                }
+            }
+            
+            if (!response || !response.ok) {
+                throw new Error(`Could not load packages.json from any path. Last error: ${lastError?.message}`);
+            }
+            
+            this.packages = await response.json();
+            console.log(`Loaded ${this.packages.length} packages successfully`);
+        } catch (error) {
+            console.error('Error loading packages:', error);
+            throw error;
+        }
+    }
+
+    populateAllDropdowns() {
+        // Find the searchable dropdown container
+        const searchableDropdown = document.querySelector('.searchable-dropdown');
+        const originalSelect = document.getElementById('package-name');
+        
+        if (!originalSelect) {
+            console.warn('No package dropdown found on this page');
+            return;
+        }
+        
+        // If searchable dropdown is present, use its input instead of the original select
+        if (searchableDropdown) {
+            const dropdownInput = searchableDropdown.querySelector('.dropdown-input');
+            if (dropdownInput) {
+                console.log('Using searchable dropdown input');
+                this.setupSearchableDropdown(originalSelect, dropdownInput);
+                return;
+            }
+        }
+        
+        // Fallback to regular dropdown if searchable dropdown is not found
+        console.log('Using regular dropdown');
+        this.populateDropdown(originalSelect);
+    }
+    
+    setupSearchableDropdown(originalSelect, dropdownInput) {
+        // Clear the original select but keep it in the DOM for form submission
+        originalSelect.innerHTML = '';
+        
+        // Add a default option
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Select a package';
+        originalSelect.appendChild(defaultOption);
+        
+        // Group packages by location type
+        const groupedPackages = this.groupPackagesByLocation();
+        
+        // Create a container for the dropdown options
+        const optionsContainer = document.createElement('div');
+        optionsContainer.className = 'package-options';
+        
+        // Add International packages section
+        if (groupedPackages.international?.length > 0) {
+            const section = this.createPackageSection('International Packages', groupedPackages.international);
+            optionsContainer.appendChild(section);
+        }
+        
+        // Add Domestic packages section
+        if (groupedPackages.domestic?.length > 0) {
+            const section = this.createPackageSection('Domestic Packages', groupedPackages.domestic);
+            optionsContainer.appendChild(section);
+        }
+        
+        // Add any other packages
+        if (groupedPackages.other?.length > 0) {
+            const section = this.createPackageSection('Other Packages', groupedPackages.other);
+            optionsContainer.appendChild(section);
+        }
+        
+        // Insert the options container after the input
+        dropdownInput.parentNode.insertBefore(optionsContainer, dropdownInput.nextSibling);
+        
+        // Handle option selection
+        optionsContainer.addEventListener('click', (e) => {
+            const option = e.target.closest('.package-option');
+            if (!option) return;
+            
+            const packageId = option.dataset.packageId;
+            const packageTitle = option.dataset.title;
+            
+            // Update the input value
+            dropdownInput.value = packageTitle;
+            
+            // Update the original select
+            originalSelect.value = packageTitle;
+            
+            // Trigger change event
+            const event = new Event('change');
+            originalSelect.dispatchEvent(event);
+            
+            // Close the dropdown
+            optionsContainer.style.display = 'none';
+        });
+        
+        // Toggle dropdown on input click
+        dropdownInput.addEventListener('click', (e) => {
+            e.stopPropagation();
+            optionsContainer.style.display = optionsContainer.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            optionsContainer.style.display = 'none';
+        });
+        
+        // Prevent dropdown from closing when clicking inside
+        optionsContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+    
+    groupPackagesByLocation() {
+        return this.packages.reduce((acc, pkg) => {
+            let type = pkg['location-type'] || pkg.type || 'other';
+            type = type.toLowerCase();
+            
+            if (['international', 'domestic', 'other'].indexOf(type) === -1) {
+                const isDomestic = pkg.location && 
+                                 (pkg.location.toLowerCase() === 'india' || 
+                                  pkg.location.toLowerCase().includes('kerala') || 
+                                  pkg.location.toLowerCase().includes('himachal') ||
+                                  pkg.location.toLowerCase().includes('manali'));
+                
+                type = isDomestic ? 'domestic' : 'international';
+            }
+            
+            if (!acc[type]) {
+                acc[type] = [];
+            }
+            acc[type].push(pkg);
+            return acc;
+        }, {});
+    }
+    
+    createPackageSection(title, packages) {
+        const section = document.createElement('div');
+        section.className = 'package-section';
+        
+        const header = document.createElement('div');
+        header.className = 'package-section-header';
+        header.textContent = title;
+        
+        const optionsList = document.createElement('div');
+        optionsList.className = 'package-options-list';
+        
+        packages.forEach(pkg => {
+            const option = document.createElement('div');
+            option.className = 'package-option';
+            option.textContent = pkg.title;
+            option.dataset.packageId = pkg.id;
+            option.dataset.title = pkg.title;
+            option.dataset.price = pkg.price;
+            option.dataset.location = pkg.location;
+            option.title = pkg.title;
+            optionsList.appendChild(option);
+        });
+        
+        section.appendChild(header);
+        section.appendChild(optionsList);
+        return section;
+    }
+    
+    setupCustomDropdown(selectElement) {
+        // Create a new instance of our custom dropdown
+        const dropdown = new CustomPackageDropdown(selectElement, this);
+        
+        // Group packages by location type
+        const groupedPackages = this.groupPackagesByLocation();
+        
+        // Add International packages section
+        if (groupedPackages.international?.length > 0) {
+            const section = this.createPackageSection('International Packages', groupedPackages.international);
+            optionsContainer.appendChild(section);
+        }
+        
+        // Add Domestic packages section
+        if (groupedPackages.domestic?.length > 0) {
+            const section = this.createPackageSection('Domestic Packages', groupedPackages.domestic);
+            optionsContainer.appendChild(section);
+        }
+        
+        // Add any other packages
+        if (groupedPackages.other?.length > 0) {
+            const section = this.createPackageSection('Other Packages', groupedPackages.other);
+            optionsContainer.appendChild(section);
+        }
+        
+        // Assemble the dropdown
+        dropdown.appendChild(input);
+        dropdown.appendChild(arrow);
+        dropdown.appendChild(optionsContainer);
+        
+        // Add the dropdown to the container
+        container.appendChild(dropdown);
+        
+        // Hide the original select but keep it for form submission
+        selectElement.style.display = 'none';
+        
+        // Handle option selection
+        optionsContainer.addEventListener('click', (e) => {
+            const option = e.target.closest('.package-option');
+            if (!option) return;
+            
+            const packageId = option.dataset.packageId;
+            const packageTitle = option.dataset.title;
+            
+            // Update the input value
+            input.value = packageTitle;
+            
+            // Update the original select
+            selectElement.value = packageTitle;
+            
+            // Update the selected option in the original select
+            const selectedOption = Array.from(selectElement.options).find(opt => opt.value === packageTitle);
+            if (selectedOption) {
+                selectedOption.selected = true;
+            }
+            
+            // Trigger change event
+            const event = new Event('change', { bubbles: true });
+            selectElement.dispatchEvent(event);
+            
+            // Close the dropdown and remove active class
+            optionsContainer.style.display = 'none';
+            dropdown.classList.remove('active');
+            
+            // Focus the input for better keyboard navigation
+            input.focus();
+        });
+        
+        // Toggle dropdown on input click or focus
+        const toggleDropdown = (open = null) => {
+            const isOpening = open !== null ? open : optionsContainer.style.display !== 'block';
+            optionsContainer.style.display = isOpening ? 'block' : 'none';
+            
+            // Toggle active class on the dropdown
+            if (isOpening) {
+                dropdown.classList.add('active');
+                // Focus the first option when opening
+                const firstOption = optionsContainer.querySelector('.package-option');
+                if (firstOption) {
+                    firstOption.classList.add('focused');
+                }
+            } else {
+                dropdown.classList.remove('active');
+                // Remove focus from all options when closing
+                optionsContainer.querySelectorAll('.package-option').forEach(opt => {
+                    opt.classList.remove('focused');
+                });
+            }
+        };
+        
+        input.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown();
+        });
+        
+        // Type-ahead search functionality
+        let typeAheadString = '';
+        let typeAheadTimeout;
+        let typeAheadIndicator = null;
+        
+        // Create type-ahead indicator element
+        const createTypeAheadIndicator = () => {
+            if (typeAheadIndicator) return;
+            
+            typeAheadIndicator = document.createElement('div');
+            typeAheadIndicator.className = 'type-ahead-indicator';
+            typeAheadIndicator.style.position = 'absolute';
+            typeAheadIndicator.style.top = '100%';
+            typeAheadIndicator.style.left = '0';
+            typeAheadIndicator.style.padding = '4px 8px';
+            typeAheadIndicator.style.background = '#f8f9fa';
+            typeAheadIndicator.style.border = '1px solid #dee2e6';
+            typeAheadIndicator.style.borderTop = 'none';
+            typeAheadIndicator.style.borderRadius = '0 0 4px 4px';
+            typeAheadIndicator.style.fontSize = '12px';
+            typeAheadIndicator.style.color = '#6c757d';
+            typeAheadIndicator.style.display = 'none';
+            typeAheadIndicator.style.zIndex = '1001';
+            
+            container.appendChild(typeAheadIndicator);
+        };
+        
+        // Show type-ahead indicator
+        const showTypeAheadIndicator = (text) => {
+            if (!typeAheadIndicator) createTypeAheadIndicator();
+            typeAheadIndicator.textContent = `Searching: ${text}`;
+            typeAheadIndicator.style.display = 'block';
+            
+            // Auto-hide after delay
+            clearTimeout(typeAheadTimeout);
+            typeAheadTimeout = setTimeout(() => {
+                if (typeAheadIndicator) {
+                    typeAheadIndicator.style.display = 'none';
+                }
+            }, 2000);
+        };
+        
+        // Hide type-ahead indicator
+        const hideTypeAheadIndicator = () => {
+            if (typeAheadIndicator) {
+                typeAheadIndicator.style.display = 'none';
+            }
+        };
+        
+        // Helper function to find option by text
+        const findOptionByText = (text) => {
+            if (!text) return null;
+            const options = Array.from(optionsContainer.querySelectorAll('.package-option'));
+            const normalizedText = text.toLowerCase();
+            
+            // First try exact match
+            let match = options.find(opt => 
+                opt.textContent.toLowerCase().startsWith(normalizedText)
+            );
+            
+            // If no exact match, try contains
+            if (!match) {
+                match = options.find(opt => 
+                    opt.textContent.toLowerCase().includes(normalizedText)
+                );
+            }
+            
+            return match;
+        };
+        
+        // Keyboard navigation
+        input.addEventListener('keydown', (e) => {
+            const options = Array.from(optionsContainer.querySelectorAll('.package-option'));
+            if (options.length === 0) return;
+            
+            const focusedOption = optionsContainer.querySelector('.focused');
+            let currentIndex = focusedOption ? options.indexOf(focusedOption) : -1;
+            let shouldPreventDefault = true;
+            
+            // Handle type-ahead for letter keys and backspace
+            if (e.key === 'Backspace') {
+                // Handle backspace - remove last character
+                typeAheadString = typeAheadString.slice(0, -1);
+                if (typeAheadString) {
+                    const matchedOption = findOptionByText(typeAheadString);
+                    if (matchedOption) {
+                        const matchedIndex = options.indexOf(matchedOption);
+                        updateFocusedOption(options, matchedIndex);
+                        showTypeAheadIndicator(typeAheadString);
+                    }
+                } else {
+                    hideTypeAheadIndicator();
+                }
+                return; // Skip the rest of the keydown handler
+            } else if (e.key.length === 1 && e.key.match(/[a-z0-9 ]/i)) {
+                // Handle alphanumeric characters and space
+                clearTimeout(typeAheadTimeout);
+                typeAheadString += e.key.toLowerCase();
+                
+                const matchedOption = findOptionByText(typeAheadString);
+                if (matchedOption) {
+                    const matchedIndex = options.indexOf(matchedOption);
+                    updateFocusedOption(options, matchedIndex);
+                    showTypeAheadIndicator(typeAheadString);
+                } else {
+                    showTypeAheadIndicator(typeAheadString + ' (no matches)');
+                }
+                
+                // Reset type-ahead string after a delay
+                typeAheadTimeout = setTimeout(() => {
+                    typeAheadString = '';
+                    hideTypeAheadIndicator();
+                }, 1500);
+                
+                return; // Skip the rest of the keydown handler
+            }
+            
+            switch (e.key) {
+                case 'Escape':
+                    optionsContainer.style.display = 'none';
+                    dropdown.classList.remove('active');
+                    break;
+                    
+                case 'Enter':
+                    if (optionsContainer.style.display === 'block' && focusedOption) {
+                        // Select the focused option if dropdown is open
+                        focusedOption.click();
+                    } else {
+                        // Toggle dropdown if it's closed or no option is focused
+                        toggleDropdown();
+                    }
+                    break;
+                    
+                case 'ArrowDown':
+                    e.preventDefault();
+                    if (optionsContainer.style.display !== 'block') {
+                        toggleDropdown(true);
+                    } else {
+                        currentIndex = (currentIndex + 1) % options.length;
+                        updateFocusedOption(options, currentIndex);
+                    }
+                    break;
+                    
+                case 'ArrowUp':
+                    e.preventDefault();
+                    if (optionsContainer.style.display !== 'block') {
+                        toggleDropdown(true);
+                    } else {
+                        currentIndex = (currentIndex - 1 + options.length) % options.length;
+                        updateFocusedOption(options, currentIndex);
+                    }
+                    break;
+                    
+                case 'Home':
+                    e.preventDefault();
+                    if (optionsContainer.style.display === 'block') {
+                        updateFocusedOption(options, 0);
+                    }
+                    break;
+                    
+                case 'End':
+                    e.preventDefault();
+                    if (optionsContainer.style.display === 'block') {
+                        updateFocusedOption(options, options.length - 1);
+                    }
+                    break;
+                    
+                default:
+                    shouldPreventDefault = false;
+            }
+            
+            if (shouldPreventDefault) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
+        
+        // Helper function to update focused option
+        const updateFocusedOption = (options, index) => {
+            options.forEach(opt => opt.classList.remove('focused'));
+            const targetOption = options[index];
+            if (targetOption) {
+                targetOption.classList.add('focused');
+                targetOption.scrollIntoView({ block: 'nearest' });
+                
+                // Update the input value to match the focused option
+                const packageTitle = targetOption.dataset.title;
+                input.value = packageTitle;
+                
+                // Update the original select value
+                selectElement.value = packageTitle;
+                const selectedOption = Array.from(selectElement.options).find(opt => opt.value === packageTitle);
+                if (selectedOption) {
+                    selectedOption.selected = true;
+                }
+            }
+        };
+        
+        // Handle option hover
+        optionsContainer.addEventListener('mouseover', (e) => {
+            const option = e.target.closest('.package-option');
+            if (!option) return;
+            
+            optionsContainer.querySelectorAll('.package-option').forEach(opt => {
+                opt.classList.remove('focused');
+            });
+            
+            option.classList.add('focused');
+        });
+        
+        // Close dropdown when clicking outside
+        const handleClickOutside = (e) => {
+            if (!dropdown.contains(e.target)) {
+                optionsContainer.style.display = 'none';
+                dropdown.classList.remove('active');
+            }
+        };
+        
+        // Close dropdown when pressing Escape
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                optionsContainer.style.display = 'none';
+                dropdown.classList.remove('active');
+            }
+        };
+        
+        // Add event listeners
+        document.addEventListener('click', handleClickOutside);
+        document.addEventListener('keydown', handleEscape);
+        
+        // Store references to all event listeners for cleanup
+        const eventListeners = [];
+        
+        // Function to add event listener with cleanup tracking
+        const addListener = (element, event, handler, options) => {
+            element.addEventListener(event, handler, options);
+            eventListeners.push({ element, event, handler, options });
+            return () => element.removeEventListener(event, handler, options);
+        };
+        
+        // Add all event listeners using our wrapper
+        addListener(input, 'click', (e) => {
+            e.stopPropagation();
+            toggleDropdown();
+        });
+        
+        addListener(input, 'keydown', handleKeyDown);
+        addListener(optionsContainer, 'mouseover', handleMouseOver);
+        addListener(document, 'click', handleClickOutside);
+        addListener(document, 'keydown', handleEscape);
+        
+        // Clean up function
+        const cleanup = () => {
+            // Skip if already cleaned up
+            if (container._isCleanedUp) return;
+            container._isCleanedUp = true;
+            
+            // Remove all event listeners
+            if (eventListeners && eventListeners.length) {
+                eventListeners.forEach(({ element, event, handler, options }) => {
+                    try {
+                        if (element && element.removeEventListener) {
+                            element.removeEventListener(event, handler, options);
+                        }
+                    } catch (e) {
+                        console.warn('Error removing event listener:', e);
+                    }
+                });
+                eventListeners.length = 0; // Clear the array
+            }
+            
+            // Clean up type-ahead indicator
+            try {
+                if (typeAheadIndicator && typeAheadIndicator.parentNode) {
+                    typeAheadIndicator.parentNode.removeChild(typeAheadIndicator);
+                }
+                typeAheadIndicator = null;
+            } catch (e) {
+                console.warn('Error cleaning up type-ahead indicator:', e);
+            }
+            
+            // Clear any pending timeouts
+            clearTimeout(typeAheadTimeout);
+            
+            // Clean up dropdown DOM elements
+            try {
+                if (dropdown && dropdown.parentNode) {
+                    dropdown.parentNode.removeChild(dropdown);
+                }
+                // Remove any references to DOM elements
+                dropdown = null;
+                input = null;
+                optionsContainer = null;
+            } catch (e) {
+                console.warn('Error cleaning up dropdown elements:', e);
+            }
+            
+            // Restore original select
+            try {
+                if (selectElement) {
+                    selectElement.style.display = '';
+                    // Remove the _dropdownInitialized flag to allow re-initialization
+                    if (container) {
+                        delete container._dropdownInitialized;
+                    }
+                }
+            } catch (e) {
+                console.warn('Error restoring original select:', e);
+            }
+            
+            // Clean up the cleanup function itself
+            if (container) {
+                delete container.cleanup;
+            }
+        };
+        
+        // Set up MutationObserver to detect when the dropdown is removed from the DOM
+        const observer = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                for (const node of mutation.removedNodes) {
+                    if (node === container || node.contains(container)) {
+                        cleanup();
+                        observer.disconnect();
+                        return;
+                    }
+                }
+            }
+        });
+        
+        // Start observing the document with the configured parameters
+        observer.observe(document.body, { childList: true, subtree: true });
+        
+        // Also clean up when the page is unloaded
+        addListener(window, 'beforeunload', cleanup);
+        
+        // Store cleanup function for manual cleanup if needed
+        container.cleanup = cleanup;
+    }
+
+    populateDropdown(selectElement) {
+        if (!selectElement) {
+            console.error('No select element provided');
+            return;
+        }
+
+        console.log(`Populating dropdown with ${this.packages.length} packages`);
+
+        // Make sure the select element is visible
+        if (selectElement.style.display === 'none') {
+            console.log('Making dropdown visible');
+            selectElement.style.display = ''; // Reset to default display
+        }
+
+        // Clear existing options
+        selectElement.innerHTML = '';
+        
+        // Add default option
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Select a package';
+        defaultOption.selected = true;
+        defaultOption.disabled = true;
+        defaultOption.hidden = true;
+        selectElement.appendChild(defaultOption);
+        
+        // Create a hidden input to store the selected package ID
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.id = 'selected-package-id';
+        hiddenInput.name = 'package_id';
+        selectElement.parentNode.insertBefore(hiddenInput, selectElement.nextSibling);
+
+        // Group packages by location type
+        const groupedPackages = this.packages.reduce((acc, pkg) => {
+            // Determine package type - check for both 'location-type' and 'type' fields
+            let type = pkg['location-type'] || pkg.type || 'other';
+            type = type.toLowerCase();
+            
+            // Map known types to standard categories
+            if (['international', 'domestic', 'other'].indexOf(type) === -1) {
+                // If it's a country name, determine if it's domestic (India) or international
+                const isDomestic = pkg.location && 
+                                 (pkg.location.toLowerCase() === 'india' || 
+                                  pkg.location.toLowerCase().includes('kerala') || 
+                                  pkg.location.toLowerCase().includes('himachal') ||
+                                  pkg.location.toLowerCase().includes('manali'));
+                
+                type = isDomestic ? 'domestic' : 'international';
+            }
+            
+            if (!acc[type]) {
+                acc[type] = [];
+            }
+            acc[type].push(pkg);
+            return acc;
+        }, {});
+        
+        console.log('Grouped packages:', groupedPackages);
+
+        // Add International packages section
+        if (groupedPackages.international?.length > 0) {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = 'International Packages';
+            
+            groupedPackages.international.forEach((pkg) => {
+                const option = document.createElement('option');
+                option.value = pkg.title;
+                option.textContent = pkg.title;
+                option.dataset.packageId = pkg.id;
+                option.dataset.price = pkg.price;
+                option.dataset.location = pkg.location;
+                optgroup.appendChild(option);
+            });
+            
+            selectElement.appendChild(optgroup);
+        }
+
+        // Add Domestic packages section
+        if (groupedPackages.domestic?.length > 0) {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = 'Domestic Packages';
+            
+            groupedPackages.domestic.forEach((pkg) => {
+                const option = document.createElement('option');
+                option.value = pkg.title;
+                option.textContent = pkg.title;
+                option.dataset.packageId = pkg.id;
+                option.dataset.price = pkg.price;
+                option.dataset.location = pkg.location;
+                optgroup.appendChild(option);
+            });
+            
+            selectElement.appendChild(optgroup);
+        }
+
+        // Add any uncategorized packages to 'Other' section
+        const otherTypes = Object.keys(groupedPackages).filter(
+            type => !['international', 'domestic'].includes(type) && type !== 'other'
+        );
+        
+        if (otherTypes.length > 0) {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = 'Other Packages';
+            
+            otherTypes.forEach(type => {
+                groupedPackages[type].forEach(pkg => {
+                    const option = document.createElement('option');
+                    option.value = pkg.title;
+                    option.textContent = pkg.title;
+                    option.dataset.packageId = pkg.id;
+                    option.dataset.price = pkg.price;
+                    option.dataset.location = pkg.location;
+                    option.dataset.type = type;
+                    optgroup.appendChild(option);
+                });
+            });
+            
+            selectElement.appendChild(optgroup);
+        }
+
+        console.log(`Dropdown now has ${selectElement.options.length} total options`);
+
+        // Add event listener for package selection
+        selectElement.addEventListener('change', (e) => {
+            this.handlePackageSelection(e.target);
+            
+            // Also update the hidden input with the selected package ID
+            const selectedOption = e.target.options[e.target.selectedIndex];
+            if (selectedOption && selectedOption.dataset.packageId) {
+                const hiddenInput = document.getElementById('selected-package-id');
+                if (hiddenInput) {
+                    hiddenInput.value = selectedOption.dataset.packageId;
+                }
+            }
+        });
+        
+        // Trigger change event to initialize the hidden input
+        if (selectElement.value) {
+            selectElement.dispatchEvent(new Event('change'));
+        }
+    }
+
+    handlePackageSelection(selectElement) {
+        const selectedOption = selectElement.selectedOptions[0];
+        if (selectedOption && selectedOption.value) {
+            const packageData = {
+                id: selectedOption.dataset.packageId,
+                title: selectedOption.value,
+                price: selectedOption.dataset.price,
+                location: selectedOption.dataset.location
+            };
+            
+            // Dispatch custom event for other components to listen to
+            document.dispatchEvent(new CustomEvent('packageSelected', {
+                detail: packageData
+            }));
+        }
+    }
+
+    handleError() {
+        // Fallback: populate with basic options if JSON loading fails
+        const packageDropdowns = document.querySelectorAll('#package-name, select[name="package"]');
+        
+        packageDropdowns.forEach(dropdown => {
+            dropdown.innerHTML = `
+                <option value="">Select a package</option>
+                <option value="Kerala Backwaters">Kerala Backwaters</option>
+                <option value="Himalayan Adventure">Himalayan Adventure</option>
+                <option value="Bali Relaxation Escape">Bali Relaxation Escape</option>
+                <option value="Bali Escape">Bali Escape</option>
+                <option value="Bali Explorer">Bali Explorer</option>
+                <option value="Dubai Dream Escape">Dubai Dream Escape</option>
+            `;
+        });
+        
+        console.warn('Using fallback package options due to loading error');
+    }
+
+    // Method to refresh dropdowns (useful if packages.json is updated)
+    async refresh() {
+        await this.init();
+    }
+
+    // Method to get all packages
+    getPackages() {
+        return this.packages;
+    }
+
+    // Method to get package by title
+    getPackageByTitle(title) {
+        return this.packages.find(pkg => pkg.title === title);
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    window.packageDropdownManager = new PackageDropdownManager();
+});
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = PackageDropdownManager;
+}

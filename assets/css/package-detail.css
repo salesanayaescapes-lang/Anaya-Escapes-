@@ -1,0 +1,562 @@
+
+html,body{
+    overflow-x: visible;
+}
+.package-detail {
+    background: linear-gradient(#ffffffde, #165dc746, #d6e7ff1e);
+    position: relative;
+}
+
+
+/* Tabs */
+.package-detail-tabs {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    background: var(--bg-white);
+    padding: 12px 16px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    z-index: 100;
+}
+
+.package-detail-tabs .tab {
+    background: none;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    color: var(--text-dark-secondary);
+}
+
+.package-detail-tabs .tab.active-tab {
+    color: var(--text-light);
+    background: var(--primary-color);
+    border-radius: 6px;
+    /* border-bottom: 3px solid var(--primary-color); */
+}
+
+#overview-card,
+#itinerary-card,
+#inc-exc,
+#cancellation-policy,
+#imp-notes {
+    scroll-margin-top: 200px;
+}
+
+/* Sticky behavior */
+.sticky-top {
+    position: sticky;
+    top: 90px;
+}
+
+.sticky-aside {
+    position: sticky;
+    top: 90px;
+    align-self: start;
+}
+
+/* Layout */
+.package-detail-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* Left section */
+
+/* ------------------------ */
+/* Overview Card */
+/* ------------------------ */
+.overview-card {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.overview-card-header {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding-top: 3px;
+}
+
+.overview-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.package-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.package-subtitle {
+    font-size: 15px;
+    color: var(--text-gray);
+    margin-bottom: 8px;
+}
+
+.package-rating {
+
+    margin-bottom: 20px;
+}
+
+.package-rating img {
+    width: 12px;
+    height: 12px;
+}
+
+.book-link {
+    font-size: 14px;
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.package-description {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.package-icons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    border-top: 1px solid var(--border-light);
+    padding-top: 20px;
+}
+
+.icon-box {
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 14px;
+    background: #f9fbff;
+    color: var(--primary-color);
+}
+
+/* ----------------------------- */
+/* Itinerary */
+/* ----------------------------- */
+.itinerary-card {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    margin-top: 25px;
+}
+
+.itinerary-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.itinerary-item {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.itinerary-item:last-child {
+    border-bottom: none;
+}
+
+/* summary styling */
+.itinerary-item summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.itinerary-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.day-label {
+    color: var(--primary-color);
+    font-weight: 600;
+    min-width: 60px;
+    border-right: 1px solid var(--text-dark);
+}
+
+.day-title {
+    flex: 1;
+    font-size: 15px;
+    color: var(--text-dark-secondary);
+}
+
+.itinerary-item summary::after {
+    content: "⌄";
+    font-size: 16px;
+    color: var(--text-gray);
+    transition: transform 0.2s ease;
+}
+
+.itinerary-item[open] summary::after {
+    transform: rotate(180deg);
+}
+
+/* body */
+.itinerary-body {
+    padding: 10px 0 0 72px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-gray);
+}
+
+.itinerary-body ul {
+    margin: 8px 0 0 18px;
+    padding: 0;
+    list-style: disc;
+}
+
+.itinerary-body li {
+    margin-bottom: 4px;
+}
+
+/* ------------------------------------------- */
+/* Inclusion & Exclusion */
+/* ------------------------------------------- */
+.inc-exc {
+    background: var(--bg-white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    margin-top: 25px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.inc-exc-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.inc-section {
+    border-right: 1px solid #000000;
+}
+
+.inc-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #008000;
+    /* Green */
+    margin-bottom: 20px;
+}
+
+.exc-section {
+    padding-left: 30px;
+}
+
+.exc-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #c50000;
+    /* Red */
+    margin-bottom: 20px;
+}
+
+.inc-list li,
+.exc-list li {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.inc-list li::before {
+    content: "✔";
+    color: #00a000;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.exc-list li::before {
+    content: "✘";
+    color: #c50000;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+/* ------------------------------ */
+/* Cancellation Policy */
+/* ------------------------------ */
+.cancellation-policy {
+    background: var(--bg-white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    margin-top: 25px;
+}
+
+.cancellation-policy-container {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #222;
+    padding-top: 15px;
+    overflow-x: auto;
+}
+
+.policy-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.policy-table th,
+.policy-table td {
+    padding: 20px;
+    border: 1px solid #eee;
+    text-align: left;
+    vertical-align: top;
+}
+
+.policy-table th {
+    font-weight: bold;
+    background: #f9f9f9;
+    color: #333;
+}
+
+.policy-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.policy-table tbody tr:hover {
+    background: #f0f8ff;
+}
+
+/* ------------------------------ */
+/* Important Notes */
+/* ------------------------------ */
+
+.notes-container {
+    background: var(--bg-white);
+    border-radius: 10px;
+    padding: 20px 30px;
+    margin: 30px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.notes-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.notes-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #444;
+    font-size: 15px;
+    line-height: 1.6;
+    padding-top: 10px;
+}
+
+
+
+
+/* Right section */
+
+.package-detail-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* display: none; */
+}
+
+.price-card {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.contact-card {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-card h3 {
+    font-size: 20px;
+}
+
+.contact-card p {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-card p img {
+    width: 20px;
+}
+
+
+.package-right-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+}
+
+.price-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price-card-header span {
+    background: var(--border-light);
+    padding: 8px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.package-price {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.package-price span {
+    font-size: 14px;
+    color: var(--text-gray);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn-outline {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.mobile-price-card {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .package-detail-right {
+        display: none;
+    }
+
+    .package-detail-tabs {
+        display: none;
+    }
+
+    .package-detail-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .book-link {
+        display: none;
+    }
+
+    .inc-exc {
+        padding: 20px;
+    }
+
+    .inc-exc-container {
+        grid-template-columns: 1fr;
+    }
+
+    .inc-section {
+        border-right: none;
+        border-bottom: 1px solid #000;
+    }
+
+    .exc-section {
+        padding-left: 0px;
+    }
+
+    .cancellation-policy {
+        padding: 20px;
+    }
+
+    .notes-container {
+        padding: 20px;
+    }
+
+    .price-card-header span {
+        padding: 4px 10px;
+        font-size: 14px;
+    }
+
+    .mobile-price-card {
+        display: block;
+        position: sticky;
+        bottom: -8px;
+        border: 1px solid #b6b6b6;
+    }
+
+    .cancellation-policy-container {
+        padding-top: 10px;
+        font-size: 14px;
+    }
+
+    .policy-table th,
+    .policy-table td {
+        padding: 15px 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .policy-table th,
+    .policy-table td {
+        padding: 12px 8px;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .policy-table th {
+        font-size: 14px;
+        font-weight: 600;
+    }
+}

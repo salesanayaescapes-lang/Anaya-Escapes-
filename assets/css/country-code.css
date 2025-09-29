@@ -1,0 +1,194 @@
+/* Country Code Dropdown Styles */
+.phone-input-container {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.country-code-dropdown {
+  position: relative;
+  min-width: 75px;
+  max-width: 85px;
+  border-right: none;
+}
+
+.country-code-input {
+  width: 100%;
+  padding: 12px 18px 8px 4px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  background-size: 12px;
+}
+
+.country-code-input:focus {
+  outline: none;
+  border-bottom-color: #007bff;
+}
+
+.country-dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+  display: none;
+  min-width: 100px;
+}
+
+.country-dropdown-list.active {
+  display: block;
+}
+
+.country-option {
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.country-option:hover {
+  background-color: #f8f9fa;
+}
+
+.country-option:last-child {
+  border-bottom: none;
+}
+
+.country-option.highlighted {
+  background-color: #e3f2fd;
+}
+
+.flag-emoji {
+  font-size: 16px;
+  min-width: 20px;
+}
+
+.country-code {
+  font-weight: 600;
+  color: #666;
+  min-width: 40px;
+}
+
+.country-name {
+  color: #333;
+  flex: 1;
+}
+
+.phone-number-input {
+  flex: 1;
+  padding: 12px 16px 8px 0;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: 14px;
+  color: #333;
+}
+
+.phone-number-input:focus {
+  outline: none;
+  border-bottom-color: #007bff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .phone-input-container {
+    flex-direction: row;
+    gap: 8px;
+  }
+  
+  .country-code-dropdown {
+    min-width: 70px;
+    max-width: 80px;
+  }
+  
+  .country-code-input {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    background-color: transparent;
+    font-size: 11px;
+    padding: 12px 16px 8px 4px;
+  }
+  
+  .phone-number-input {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 12px 16px 8px 0;
+  }
+  
+  .country-dropdown-list {
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+/* Modal specific responsive styles */
+@media (max-width: 768px) {
+  #modal-contact .phone-input-container {
+    flex-direction: row;
+    gap: 8px;
+  }
+  
+  #modal-contact .country-code-dropdown {
+    min-width: 70px;
+    max-width: 80px;
+  }
+  
+  #modal-contact .country-code-input {
+    border: none;
+    border-bottom: 1px solid #000000;
+    border-radius: 0;
+    padding: 8px 16px 8px 3px;
+    background-color: transparent;
+    font-size: 11px;
+  }
+  
+  #modal-contact .phone-number-input {
+    border: none;
+    border-bottom: 1px solid #000000;
+    border-radius: 0;
+    padding: 8px 12px 8px 8px;
+    background-color: transparent;
+  }
+  
+  #modal-contact .country-dropdown-list {
+    border-radius: 0 0 8px 8px;
+    max-height: 150px;
+  }
+}
+
+/* Flag icons styling */
+.country-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flag-icon {
+  width: 20px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+}

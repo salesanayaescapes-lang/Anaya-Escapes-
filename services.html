@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Anaya Escapes - Your trusted partner for seamless and memorable travel experiences"
+    />
+    <meta
+      name="keywords"
+      content="travel agency, tour packages, vacation, holiday, travel booking"
+    />
+    <title>Anaya Escapes | Premium Travel Agency</title>
+    <!-- Main stylesheet -->
+    <link
+      rel="shortcut icon"
+      href="assets/images/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/assets/css/packages-home.css" />
+    <link rel="stylesheet" href="/assets/css/mobile-nav.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="js/Global/dropdown.js" defer></script>
+    <script src="js/Global/mobileNav.js" defer></script>
+  </head>
+
+  <body>
+    <a
+      href="https://api.whatsapp.com/send/?phone=918448424042&text&type=phone_number&app_absent=0"
+    >
+      <div class="whtsp-icon">
+        <img src="assets/images/whtspicon.svg" alt="" />
+      </div>
+    </a>
+
+    <!-- Main Page Container -->
+    <div class="page-container">
+      <!-- Header Section: Contains logo, navigation and CTA button -->
+      <header id="header" class="site-header">
+        <!-- Logo Component -->
+        <div class="logo">
+          <a href="index.html">
+            <img
+              class="logo-image"
+              src="/assets/images/logo.png"
+              alt="anayaescapes-logo"
+            />
+          </a>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="main-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li class="dropdown">
+              <a href="packages.html" class="dropdown-toggle">Packages</a>
+              <div class="dropdown-content">
+                <a
+                  href="packages.html?filter=international"
+                  class="dropdown-item"
+                  >International</a
+                >
+                <a href="packages.html?filter=domestic" class="dropdown-item"
+                  >Domestic</a
+                >
+              </div>
+            </li>
+            <li><a href="Contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button
+          class="mobile-menu-toggle"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Call to Action Button -->
+        <a href="Contact.html" class="cta-button">Book Now</a>
+      </header>
+
+      <!-- Services Section: Our offerings and expertise -->
+      <section id="services" class="services-section">
+        <!-- Services Header: Title and description -->
+        <div class="services-header">
+          <div class="services-header-text">
+            <p class="services-subtitle">SERVICES</p>
+            <h2 class="services-title">
+              <div class="split-target">What We</div>
+              <div class="services-title-mini-image-container">
+                <span class="services-title-mini-image"></span>
+                <span class="text-primary split-target">Offer?</span>
+              </div>
+            </h2>
+          </div>
+          <div class="services-header-aside">
+            <p class="services-description">
+              From planning to execution, we offer a complete range of travel
+              services designed to make every journey smooth, memorable, and
+              perfectly tailored to you.
+            </p>
+            <a href="#contact" class="services-cta">
+              <span>Let's Talk</span>
+              <div class="services-cta-arrow-bg">
+                <img src="/assets/images/arrow-right.svg" alt="arrow right" />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Services Grid: Cards displaying our services -->
+        <div class="services-grid">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <h3 class="service-title">
+              International Tour <span class="text-primary">Packages</span>
+            </h3>
+            <p class="service-description">
+              Tailor-made trips to stunning destinations around the world.
+            </p>
+            <a href="#" class="service-arrow"
+              ><img src="/assets/images/ser-arrow-right.svg" alt="arrow"
+            /></a>
+          </article>
+          <article class="service-card">
+            <span class="service-number">02</span>
+            <h3 class="service-title">
+              Domestic <span class="text-primary">Tour </span>Packages
+            </h3>
+            <p class="service-description">
+              Explore the beauty and culture of India with personalized travel
+              plans.
+            </p>
+            <a href="#" class="service-arrow"
+              ><img src="/assets/images/ser-arrow-right.svg" alt="arrow"
+            /></a>
+          </article>
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <h3 class="service-title">
+              Hotel <span class="text-primary">Reservation</span>
+            </h3>
+            <p class="service-description">
+              Hassle-free bookings at the best hotels for your comfort and
+              style.
+            </p>
+            <a href="#" class="service-arrow"
+              ><img src="/assets/images/ser-arrow-right.svg" alt="arrow"
+            /></a>
+          </article>
+          <article class="service-card">
+            <span class="service-number">04</span>
+            <h3 class="service-title">
+              <span class="text-primary">Flight </span>Ticket
+              <span class="text-primary">Bookings</span>
+            </h3>
+            <p class="service-description">
+              Quick and easy flight arrangements at competitive prices.
+            </p>
+            <a href="#" class="service-arrow"
+              ><img src="/assets/images/ser-arrow-right.svg" alt="arrow"
+            /></a>
+          </article>
+          <article class="service-card">
+            <span class="service-number">05</span>
+            <h3 class="service-title">
+              Visa Assistance <span class="text-primary">Services</span>
+            </h3>
+            <p class="service-description">
+              Smooth and reliable support for all your travel visa needs.
+            </p>
+            <a href="#" class="service-arrow"
+              ><img src="/assets/images/ser-arrow-right.svg" alt="arrow"
+            /></a>
+          </article>
+          <article class="service-card">
+            <span class="service-number">06</span>
+            <h3 class="service-title">
+              <span class="text-primary">Family</span> Tour Packages
+            </h3>
+            <p class="service-description">
+              Fun-filled vacations designed for unforgettable family moments.
+            </p>
+            <a href="#" class="service-arrow"
+              ><img src="/assets/images/ser-arrow-right.svg" alt="arrow"
+            /></a>
+          </article>
+          <article class="service-card">
+            <span class="service-number">07</span>
+            <h3 class="service-title">
+              Customized <span class="text-primary">Honeymoon</span> Packages
+            </h3>
+            <p class="service-description">
+              Romantic getaways crafted to make your honeymoon truly special.
+            </p>
+            <a href="#" class="service-arrow"
+              ><img src="/assets/images/ser-arrow-right.svg" alt="arrow"
+            /></a>
+          </article>
+          <article class="service-card">
+            <span class="service-number">08</span>
+            <h3 class="service-title">
+              <span class="text-primary">Bachelor</span> & Group Tours
+            </h3>
+            <p class="service-description">
+              Exciting and adventurous trips for friends and large groups.
+            </p>
+            <a href="#" class="service-arrow"
+              ><img src="/assets/images/ser-arrow-right.svg" alt="arrow"
+            /></a>
+          </article>
+          <article class="service-card">
+            <span class="service-number">09</span>
+            <h3 class="service-title">
+              Corporate <span class="text-primary">Travel </span>&
+              <span class="text-primary">Tours</span>
+            </h3>
+            <p class="service-description">
+              Professional travel solutions for business trips and events.
+            </p>
+            <a href="#" class="service-arrow"
+              ><img src="/assets/images/ser-arrow-right.svg" alt="arrow"
+            /></a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer id="footer" class="site-footer">
+        <div class="footer-main">
+          <div class="footer-column about-column">
+            <!--merged image-->
+            <div class="footer-logo">
+              <img
+                class="logo-image"
+                src="/assets/images/logo.png"
+                alt="anayaescapes-logo"
+              />
+            </div>
+            <p>
+              Where Elegance Meets, Every Escape.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h4>Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="packages.html">Packages</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="Contact.html">Contact Us</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="TnC.html">Terms & Conditions</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Get In Touch</h4>
+            <ul>
+              <li>
+                <a href="tel:+918448424042">
+                  <img src="/assets/images/callIcon.svg" alt="Phone" />+91 84484
+                  24042
+                </a>
+              </li>
+              <li>
+                <a href="mailto:support@anayaescapes.com">
+                  <img
+                    src="/assets/images/mailIcon.svg"
+                    alt="Email"
+                  />Support@anayaescapes.com
+                </a>
+              </li>
+              <li>
+                <a href="https://maps.app.goo.gl/vdxogJnuHXCupBGr8" target="_blank">
+                  <img src="/assets/images/locationIcon.svg" alt="Location" />84,
+                  Shop no. 5, Shanti Niwas, Arjun Nagar, Safdarjung Enclave -
+                  110029
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Follow Us On</h4>
+            <p>Follow us and stay updates with daily offers</p>
+            <div class="social-icons">
+              <a href="https://linktr.ee/info.anayaescapes" class="social-icon">
+                <img
+                  src="/assets/images/linktreeicon.svg"
+                  alt="Social Icon 1"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/anaya.escapes"
+                class="social-icon"
+              >
+                <img src="assets/images/igIcon.svg" />
+              </a>
+              <a
+                href="https://www.youtube.com/@AnayaEscapes"
+                class="social-icon"
+              >
+                <img src="/assets/images/ytIcon.svg" alt="Social Icon 3" />
+              </a>
+              <a
+                href="https://www.facebook.com/Anaya%20Escapes"
+                class="social-icon"
+              >
+                <img src="/assets/images/fbIcon.svg" alt="Social Icon 3" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Anaya Escapes. All Rights Reserved.</p>
+          <!-- <p>Developed by webdrave</p> -->
+        </div>
+      </footer>
+    </div>
+
+    <!-- Required Packages -->
+    <!-- GSAP -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+      integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Motion Path -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/MotionPathPlugin.min.js"></script>
+
+    <!-- Split Text -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <!-- Draggable -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"
+      integrity="sha512-dgqdovLK5r/NMiV5YfWA0xC94DKGrm+6q1OZpuWHm+uBGLTck6wu58WAX9lmy8wec6cVnsgxbPJ60DtmNFnfgg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- ScrollTrigger -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+      integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Locomotive -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script type="module" src="js/main-home.js"></script>
+  </body>
+</html>

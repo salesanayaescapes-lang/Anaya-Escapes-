@@ -1,0 +1,225 @@
+/* ==========================================================================
+    SERVICES SECTION
+   ========================================================================== */
+.services-section {
+    padding-top: 117px;
+    /* 2919 - 2782 */
+}
+
+.services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 120px;
+}
+
+.services-subtitle {
+    font-size: 20px;
+    color: var(--text-gray);
+    margin-bottom: 14px;
+}
+
+.services-title {
+    font-family: "Clash Display", sans-serif;
+    font-weight: 600;
+    font-size: 95px;
+    line-height: 0.9;
+}
+
+.services-title-mini-image-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.services-title-mini-image {
+    display: inline-block;
+    /* width: 170px; */
+    width: 0;
+    height: 85px;
+    background-image: url("../../assets/images/ocean.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 14px;
+    position: relative;
+    top: 10px;
+}
+
+.services-header-aside {
+    max-width: 775px;
+    text-align: right;
+}
+
+.services-description {
+    font-size: 26px;
+    line-height: 1.23;
+    color: #2f2f2f;
+    margin-bottom: 40px;
+}
+
+.services-cta {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--primary-color);
+    border-radius: 34px;
+    padding: 0;
+    font-size: 24px;
+    color: var(--primary-color);
+    /* height: 68px; */
+    transition: all 0.3s ease;
+}
+
+.services-cta span {
+    padding-left: 34px;
+    padding-right: 30px;
+}
+
+.services-cta-arrow-bg {
+    width: 46px;
+    height: 46px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.services-cta-arrow-bg img {
+    width: 36px;
+    height: 36px;
+    transform: rotate(-15deg);
+}
+
+.services-cta:hover .services-cta-arrow-bg {
+    transform: rotate(30deg);
+}
+
+.services-cta:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 64px 150px;
+}
+
+.service-card {
+    border-top: 1px solid #a5a5a5;
+    padding-top: 25px;
+}
+
+.service-number {
+    font-size: 32px;
+    color: #202020;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.service-title {
+    font-family: "Clash Display", sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 33px;
+    min-height: 112px;
+}
+
+.service-description {
+    font-size: 20px;
+    line-height: 1.4;
+    color: #4d4d4d;
+    margin-bottom: 64px;
+    max-width: 500px;
+}
+
+.service-arrow img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.service-card:hover .service-arrow img {
+    /* transform: translateX(10px); */
+    transform: rotate(-45deg) scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+@media (min-width: 1840px) {
+    .services-title {
+        font-size: 120px;
+    }
+
+    .services-description {
+        font-size: 32px;
+    }
+
+    .services-header-aside {
+        max-width: 930px;
+    }
+
+    .services-title-mini-image {
+        top: 2px;
+    }
+
+    .services-cta span {
+        padding-left: 43px;
+    }
+
+    .services-cta-arrow-bg {
+        width: 56px;
+        height: 56px;
+        margin: 6px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .services-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .services-header-aside {
+        text-align: left;
+    }
+
+    .services-title {
+        font-size: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-section {
+        padding-top: 60px;
+    }
+
+    .services-title {
+        font-size: 42px;
+    }
+
+    .services-description {
+        font-size: 22px;
+    }
+
+    .services-grid {
+        gap: 40px;
+    }
+
+    .service-title {
+        font-size: 32px;
+        min-height: auto;
+    }
+
+    .services-title-mini-image {
+        /* width: 100px; */
+        height: 50px;
+        border-radius: 8px;
+    }
+}
