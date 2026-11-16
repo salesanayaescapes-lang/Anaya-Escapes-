@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderDestinations();
     imageGrow();
     testimonialMarquee();
-    testimonialMarquee();
     whatsaapIcon();
     
     // Initialize auto popup modal
