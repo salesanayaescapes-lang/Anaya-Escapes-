@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     safeInit("packages title animation", () => titleReveal(".packages-title"));
     safeInit("testimonials title animation", () => titleReveal(".testimonials-title"));
-    subsafeInit("testimonials subtitle animation", () => titleReveal(".testimonials-subtitle"));
+    safeInit("testimonials subtitle animation", () => subtitleReveal(".testimonials-subtitle"));
     safeInit("contact title animation", () => titleReveal(".contact-title"));
 
     // Initialize mobile menu
