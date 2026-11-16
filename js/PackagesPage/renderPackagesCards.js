@@ -1,5 +1,6 @@
 export function renderPackagesCards() {
   const container = document.querySelector(".packages-cards-container");
+  if (!container) return;
   let allPackages = [];
   let activeFilter = null;
 
@@ -62,7 +63,7 @@ export function renderPackagesCards() {
       }
       
       let tagsHTML = '';
-      pkg.tags.forEach(tag => {
+      (Array.isArray(pkg.tags) ? pkg.tags : []).forEach(tag => {
         tagsHTML += `<span class="tag">${tag}</span>`;
       });
         
@@ -232,9 +233,13 @@ export function renderPackagesCards() {
   };
 
   // Fetch packages data
-  fetch("packages.json")
-    .then((res) => res.json())
+  fetch("/packages.json")
+    .then((res) => {
+      if (!res.ok) throw new Error(`packages.json returned HTTP ${res.status}`);
+      return res.json();
+    })
     .then((data) => {
+      if (!Array.isArray(data)) throw new Error("packages.json must contain an array");
       allPackages = data;
       
       // Dynamically populate filter buttons based on packages data
@@ -256,6 +261,6 @@ export function renderPackagesCards() {
     })
     .catch(error => {
       console.error('Error loading packages:', error);
-      container.innerHTML = '<p>Unable to load packages. Please try again later.</p>';
+      if (container) container.innerHTML = '<p class="no-packages-message">Unable to load packages. Please refresh the page.</p>';
     });
 }
