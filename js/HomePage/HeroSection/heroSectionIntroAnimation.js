@@ -43,7 +43,11 @@ export function heroSectionIntroAnimation() {
             .to(".text-loader-2 span", { opacity: 0, delay: 0.25 })
             .to(".bg-loader, .loader", {
                 top: 0, height: "0vh", delay: 0.3,
-                onComplete: titleAppearAnimation,
+                onComplete: () => {
+                    const title = document.querySelector(".hero-title");
+                    if (title) gsap.set(title, { opacity: 1 });
+                    titleAppearAnimation();
+                },
             })
             .set(".loader", { display: "none" });
     }
@@ -58,10 +62,8 @@ export function heroSectionIntroAnimation() {
     if (document.querySelector(".hero-cta")) {
         tl.from(".hero-cta", { autoAlpha: 0, y: 60, duration: 0.5 });
     }
-    if (title) {
-        if (!hasLoader) titleAppearAnimation();
-        else gsap.delayedCall(0.8, () => { gsap.set(title, { opacity: 1 }); titleAppearAnimation(); });
-    }
+    // Run the title reveal exactly once: after the loader, or immediately without it.
+    if (title && !hasLoader) titleAppearAnimation();
     if (document.querySelector(".hero-subtitle")) {
         tl.from(".hero-subtitle", { autoAlpha: 0, y: 2, duration: 0.3 }, "-=0.4");
     }
