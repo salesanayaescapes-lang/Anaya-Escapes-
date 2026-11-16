@@ -64,32 +64,44 @@ function initMobileMenu() {
 
 document.addEventListener("DOMContentLoaded", () => {
     // Global
-    const scroll = new LocomotiveScroll();
-    titleReveal(".packages-title");
-    subtitleReveal(".packages-subtitle");
-    titleReveal(".destinations-title");
-    subtitleReveal(".destinations-subtitle");
-    titleReveal(".testimonials-title");
-    subtitleReveal(".testimonials-subtitle");
-    titleReveal(".contact-title");
+    // Optional smooth-scroll enhancement: never let a missing CDN library
+    // prevent the rest of the page (packages, navigation, and animations) from loading.
+    try {
+        if (typeof window.LocomotiveScroll === "function") {
+            window.anayaScroll = new window.LocomotiveScroll();
+        }
+    } catch (error) {
+        console.warn("Locomotive Scroll unavailable; using native scrolling.", error);
+    }
+
+    const safeInit = (name, callback) => {
+        try { callback(); }
+        catch (error) { console.error(`Anaya Escapes: ${name} could not initialize.`, error); }
+    };
+    safeInit("packages title animation", () => titleReveal(".packages-title"));
+    safeInit("packages subtitle animation", () => subtitleReveal(".packages-subtitle"));
+    safeInit("destinations title animation", () => titleReveal(".destinations-title"));
+    safeInit("destinations subtitle animation", () => subtitleReveal(".destinations-subtitle"));
+    safeInit("testimonials title animation", () => titleReveal(".testimonials-title"));
+    safeInit("testimonials subtitle animation", () => subtitleReveal(".testimonials-subtitle"));
+    safeInit("contact title animation", () => titleReveal(".contact-title"));
 
     // Initialize mobile menu
     initMobileMenu();
 
-    heroSectionIntroAnimation();
-    handleHeroImageSlider();
-    handlePaperPlaneAnimation();
-    handleScrollSpeed();
-    textColorFade();
-    headingSlideIn();
-    handleServiceAnimations();
-    renderPackages();
-    renderDestinations();
-    imageGrow();
-    testimonialMarquee();
-    testimonialMarquee();
-    whatsaapIcon();
+    safeInit("hero intro", () => heroSectionIntroAnimation());
+    safeInit("hero slider", () => handleHeroImageSlider());
+    safeInit("paper plane animation", () => handlePaperPlaneAnimation());
+    safeInit("banner scroll effect", () => handleScrollSpeed());
+    safeInit("about text animation", () => textColorFade());
+    safeInit("about heading animation", () => headingSlideIn());
+    safeInit("service animations", () => handleServiceAnimations());
+    safeInit("package cards", () => renderPackages());
+    safeInit("destinations", () => renderDestinations());
+    safeInit("gallery animation", () => imageGrow());
+    safeInit("testimonial marquee", () => testimonialMarquee());
+    safeInit("WhatsApp icon", () => whatsaapIcon());
     
     // Initialize auto popup modal
-    initAutoPopupModal();
+    safeInit("popup modal", () => initAutoPopupModal());
 });
