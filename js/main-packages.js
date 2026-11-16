@@ -58,24 +58,37 @@ function initMobileMenu() {
 
 document.addEventListener("DOMContentLoaded", () => {
     // Global
-    const scroll = new LocomotiveScroll();
-    titleReveal(".packages-title");
-    titleReveal(".testimonials-title");
-    subtitleReveal(".testimonials-subtitle");
-    titleReveal(".contact-title");
+    // Optional smooth-scroll enhancement: never let a missing CDN library
+    // prevent the rest of the page (packages, navigation, and animations) from loading.
+    try {
+        if (typeof window.LocomotiveScroll === "function") {
+            window.anayaScroll = new window.LocomotiveScroll();
+        }
+    } catch (error) {
+        console.warn("Locomotive Scroll unavailable; using native scrolling.", error);
+    }
+
+    const safeInit = (name, callback) => {
+        try { callback(); }
+        catch (error) { console.error(`Anaya Escapes: ${name} could not initialize.`, error); }
+    };
+    safeInit("packages title animation", () => titleReveal(".packages-title"));
+    safeInit("testimonials title animation", () => titleReveal(".testimonials-title"));
+    subsafeInit("testimonials subtitle animation", () => titleReveal(".testimonials-subtitle"));
+    safeInit("contact title animation", () => titleReveal(".contact-title"));
 
     // Initialize mobile menu
     initMobileMenu();
 
     // Packages Exclusive Fn
-    handlePackagesHeroImageSlider();
-    renderPackagesCards();
-    packagesSectionAnimation();
+    safeInit("packages hero slider", () => handlePackagesHeroImageSlider());
+    safeInit("package cards", () => renderPackagesCards());
+    safeInit("packages section animation", () => packagesSectionAnimation());
 
     // Imported from Home (same fn without any change chahiye the)
-    heroSectionIntroAnimation();
-    handlePaperPlaneAnimation();
-    packageCarouselMarquee();
-    testimonialMarquee();
-    whatsaapIcon();
+    safeInit("hero intro", () => heroSectionIntroAnimation());
+    safeInit("paper plane animation", () => handlePaperPlaneAnimation());
+    safeInit("package carousel", () => packageCarouselMarquee());
+    safeInit("testimonial marquee", () => testimonialMarquee());
+    safeInit("WhatsApp icon", () => whatsaapIcon());
 });
