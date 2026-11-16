@@ -1,4 +1,7 @@
 export function titleReveal(splitTarget) {
+    if (typeof window.gsap === "undefined" || typeof window.SplitText === "undefined") return;
+    if (!document.querySelector(splitTarget)) return;
+
     SplitText.create(splitTarget, {
         type: "lines, words",
         mask: "lines",
@@ -13,7 +16,6 @@ export function titleReveal(splitTarget) {
                     trigger: splitTarget,
                     start: "top 80%",
                     toggleActions: "play none none reverse",
-                    // markers: true
                 },
             });
         },
@@ -21,6 +23,9 @@ export function titleReveal(splitTarget) {
 }
 
 export function subtitleReveal(target) {
+    if (typeof window.gsap === "undefined") return;
+    if (!document.querySelector(target)) return;
+
     gsap.from(target, {
         y: 50,
         autoAlpha: 0,
@@ -30,21 +35,12 @@ export function subtitleReveal(target) {
             trigger: target,
             start: "top 82%",
             toggleActions: "play none none reverse",
-            // markers: true
         },
-    })
+    });
 }
 
-// titleReveal(".packages-title");
-// subtitleReveal(".packages-subtitle");
-
-// titleReveal(".destinations-title");
-// subtitleReveal(".destinations-subtitle");
-
-// titleReveal(".testimonials-title");
-// subtitleReveal(".testimonials-subtitle");
-
-subtitleReveal(".gallery-subtitle");
-subtitleReveal(".gallery-title");
-
-// titleReveal(".contact-title");
+// Optional gallery heading effects. These must never prevent page modules loading.
+if (typeof window.gsap !== "undefined") {
+    subtitleReveal(".gallery-subtitle");
+    subtitleReveal(".gallery-title");
+}

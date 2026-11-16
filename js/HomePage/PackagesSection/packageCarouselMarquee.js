@@ -2,6 +2,9 @@ export function packageCarouselMarquee() {
     const wrapper = document.querySelector(".packages-carousel-wrapper");
     const track = document.querySelector(".packages-carousel");
     if (!wrapper || !track) return;
+    if (typeof window.gsap === "undefined") return;
+    if (track.dataset.marqueeInitialized === "true") return;
+    track.dataset.marqueeInitialized = "true";
 
     // Keep only one set in HTML! cloning that once for a seamless loop
     const originalItems = Array.from(track.children);
@@ -24,6 +27,7 @@ export function packageCarouselMarquee() {
     }
 
     let segmentWidth = measureSegmentWidth();
+    if (!segmentWidth) return;
     let x = 0;
     const baseSpeed = 60; // px per second
     let speed = baseSpeed;
@@ -47,7 +51,8 @@ export function packageCarouselMarquee() {
         let progress = Math.abs(wrapped) / segmentWidth;
         if (progress >= 1) progress = 0;
 
-        document.querySelector(".packages-progress").style.width = (progress * 100) + "%";
+        const progressElement = document.querySelector(".packages-progress");
+        if (progressElement) progressElement.style.width = (progress * 100) + "%";
     }
 
     function tick(now) {

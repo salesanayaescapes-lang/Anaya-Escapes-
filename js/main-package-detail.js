@@ -10,12 +10,25 @@ import { whatsaapIcon } from "./HomePage/Other/Whatsappicon.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     // Global
-    const scroll = new LocomotiveScroll();
-    titleReveal(".packages-title");
-    subtitleReveal(".packages-subtitle");
-    titleReveal(".testimonials-title");
-    subtitleReveal(".testimonials-subtitle");
-    titleReveal(".contact-title");
+    // Optional smooth-scroll enhancement: never let a missing CDN library
+    // prevent the rest of the page (packages, navigation, and animations) from loading.
+    try {
+        if (typeof window.LocomotiveScroll === "function") {
+            window.anayaScroll = new window.LocomotiveScroll();
+        }
+    } catch (error) {
+        console.warn("Locomotive Scroll unavailable; using native scrolling.", error);
+    }
+
+    const safeInit = (name, callback) => {
+        try { callback(); }
+        catch (error) { console.error(`Anaya Escapes: ${name} could not initialize.`, error); }
+    };
+    safeInit("packages title animation", () => titleReveal(".packages-title"));
+    safeInit("packages subtitle animation", () => subtitleReveal(".packages-subtitle"));
+    safeInit("testimonials title animation", () => titleReveal(".testimonials-title"));
+    safeInit("testimonials subtitle animation", () => subtitleReveal(".testimonials-subtitle"));
+    safeInit("contact title animation", () => titleReveal(".contact-title"));
 
     // Package Detail
     const packageDetailId = new URLSearchParams(window.location.search).get("id");
@@ -23,13 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "/packages.html";
         return;
     }
-    renderPackageDetail(packageDetailId);
+    safeInit("package detail data", () => renderPackageDetail(packageDetailId));
 
 
-    packageDetailHeroIntroAnimation();
-    handleActiveTab();
-    handleModal();
-    renderPackages();
-    testimonialMarquee();
-    whatsaapIcon();
+    safeInit("package detail hero animation", () => packageDetailHeroIntroAnimation());
+    safeInit("package detail tabs", () => handleActiveTab());
+    safeInit("booking modal", () => handleModal());
+    safeInit("related package cards", () => renderPackages());
+    safeInit("testimonial marquee", () => testimonialMarquee());
+    safeInit("WhatsApp icon", () => whatsaapIcon());
 });
